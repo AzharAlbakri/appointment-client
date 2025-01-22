@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Website</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div>
+        <h1>azhar</h1>
+    </div>
+  <!-- هنا يتم وضع الأقسام التي سنبنيها -->
+  <form id="appointmentForm">
+    <input type="text" id="patientName" name="patient_name" placeholder="اسم المريض" required>
+    <input type="text" id="phoneNumber" name="phone_number" placeholder="رقم الهاتف" required>
+    <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+    <input type="text" id="identityNumber" name="identity_number" placeholder="رقم الهوية" required>
+    <input type="date" id="appointmentDate" name="appointment_date" required>
+    <input type="time" id="appointmentTime" name="appointment_time" required>
+    <input type="text" id="appointmentReason" name="appointment_reason" placeholder="سبب الموعد" required>
+    <input type="text" id="preferredDoctor" name="preferred_doctor" placeholder="الطبيب المفضل">
+    <textarea id="additionalNotes" name="additional_notes" placeholder="ملاحظات إضافية"></textarea>
+    <input type="checkbox" id="hasInsurance" name="has_insurance"> لديك تأمين؟
+    <input type="text" id="insuranceCompany" name="insurance_company" placeholder="شركة التأمين">
+    <input type="text" id="insurancePolicyNumber" name="insurance_policy_number" placeholder="رقم بوليصة التأمين">
+    <input type="checkbox" id="agreeToTerms" name="agree_to_terms" required> أوافق على الشروط والأحكام
+    <select id="reminderMethod" name="reminder_method" required>
+        <option value="email">البريد الإلكتروني</option>
+        <option value="sms">الرسائل النصية</option>
+    </select>
+    
+    <button type="submit">حجز الموعد</button>
+</form>
+
+
+  
+
+  <!-- ملفات الجافاسكربت -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
