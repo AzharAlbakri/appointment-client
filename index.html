@@ -22,8 +22,12 @@
     <input type="text" id="phoneNumber" name="phone_number" placeholder="رقم الهاتف" required>
     <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
     <input type="text" id="identityNumber" name="identity_number" placeholder="رقم الهوية" required>
+    <label for="appointmentDate">اختر تاريخ الموعد:</label>
     <input type="date" id="appointmentDate" name="appointment_date" required>
-    <input type="time" id="appointmentTime" name="appointment_time" required>
+    <label for="appointmentTime">اختر وقت الموعد:</label>
+    <select id="appointmentTime" name="appointment_time" required disabled>
+        <option value="">اختر الوقت</option>
+    </select>
     <input type="text" id="appointmentReason" name="appointment_reason" placeholder="سبب الموعد" required>
     <input type="text" id="preferredDoctor" name="preferred_doctor" placeholder="الطبيب المفضل">
     <textarea id="additionalNotes" name="additional_notes" placeholder="ملاحظات إضافية"></textarea>
@@ -35,9 +39,9 @@
         <option value="email">البريد الإلكتروني</option>
         <option value="sms">الرسائل النصية</option>
     </select>
-    
     <button type="submit">حجز الموعد</button>
 </form>
+
 
 
   
