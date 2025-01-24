@@ -9,44 +9,193 @@
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
 
-    <div>
-        <h1>azhar</h1>
+  <!-- Thin Top Header -->
+  <header class="top-header text-white py-2">
+    <div class="container d-flex justify-content-between">
+      <div>
+        <i class="bi bi-telephone me-2"></i><span>+123 456 789</span> | 
+        <i class="bi bi-whatsapp me-2"></i><span>+987 654 321</span>
+      </div>
+      <div class="text-end">
+        <h5>اسم العيادة</h5>
+        <p>موقع العيادة: شارع 123، المدينة</p>
+        <button class="btn btn-primary">حجز الموعد</button>
+      </div>
     </div>
-  <!-- هنا يتم وضع الأقسام التي سنبنيها -->
-  <form id="appointmentForm">
-    <input type="text" id="patientName" name="patient_name" placeholder="اسم المريض" required>
-    <input type="text" id="phoneNumber" name="phone_number" placeholder="رقم الهاتف" required>
-    <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
-    <input type="text" id="identityNumber" name="identity_number" placeholder="رقم الهوية" required>
-    <label for="appointmentDate">اختر تاريخ الموعد:</label>
-    <input type="date" id="appointmentDate" name="appointment_date" required>
-    <label for="appointmentTime">اختر وقت الموعد:</label>
-    <select id="appointmentTime" name="appointment_time" required disabled>
-        <option value="">اختر الوقت</option>
-    </select>
-    <input type="text" id="appointmentReason" name="appointment_reason" placeholder="سبب الموعد" required>
-    <input type="text" id="preferredDoctor" name="preferred_doctor" placeholder="الطبيب المفضل">
-    <textarea id="additionalNotes" name="additional_notes" placeholder="ملاحظات إضافية"></textarea>
-    <input type="checkbox" id="hasInsurance" name="has_insurance"> لديك تأمين؟
-    <input type="text" id="insuranceCompany" name="insurance_company" placeholder="شركة التأمين">
-    <input type="text" id="insurancePolicyNumber" name="insurance_policy_number" placeholder="رقم بوليصة التأمين">
-    <input type="checkbox" id="agreeToTerms" name="agree_to_terms" required> أوافق على الشروط والأحكام
-    <select id="reminderMethod" name="reminder_method" required>
-        <option value="email">البريد الإلكتروني</option>
-        <option value="sms">الرسائل النصية</option>
-    </select>
-    <button type="submit">حجز الموعد</button>
-</form>
+  </header>
+
+  <!-- Another Thin Header -->
+  <header class="thin-header another-header bg-light text-dark py-2">
+    <div class="container d-flex justify-content-between">
+      <div>
+        <img src="assets/images/logo.png" alt="Clinic Logo" height="40">
+        <h5>اسم العيادة</h5>
+      </div>
+      <div class="text-end">
+        <p>وصف العيادة: نقدم خدمات طبية متميزة في جميع التخصصات.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Bar -->
+  <nav class="menu-bar navbar navbar-expand-lg ">
+    <div class="container">
+      <div class="d-flex">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Equipo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Patologías</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Tratamientos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Peritaje Médico-Legal</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ms-auto">
+        <button class="btn btn-primary">حجز الموعد</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <!-- <section class="hero bg-light text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Welcome to Our Clinic</h1>
+      <p class="lead">Providing top-notch medical care tailored for you.</p>
+    </div>
+  </section> -->
 
 
-
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero-slider">
+    <!-- Consultation Form -->
+  <div class="consultation-form">
+    <form id="consultationForm">
+      <h4>طلب استشارة</h4>
+      <div class="mb-3">
+        <label for="fullName" class="form-label">الاسم الكامل</label>
+        <input type="text" id="consultationfullName" name="fullName" class="form-control" placeholder="أدخل اسمك" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">البريد الإلكتروني</label>
+        <input type="email" id="consultationemail" name="email" class="form-control" placeholder="example@example.com" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">رقم الهاتف</label>
+        <input type="text" id="consultationphone" name="phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
+      </div>
+      <div class="mb-3">
+        <label for="contactMethod" class="form-label">طريقة التواصل</label>
+        <select id="consultationcontactMethod" name="contactMethod" class="form-select" required>
+          <option value="email">البريد الإلكتروني</option>
+          <option value="phone">الهاتف</option>
+          <option value="whatsapp">واتساب</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="consultationType" class="form-label">نوع الاستشارة</label>
+        <select id="consultationconsultationType" name="consultationType" class="form-select" required>
+          <option value="general">استشارة عامة</option>
+          <option value="medical">استشارة طبية</option>
+          <option value="legal">استشارة قانونية</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="additionalInfo" class="form-label">معلومات إضافية</label>
+        <textarea id="consultationadditionalInfo" name="additionalInfo" class="form-control" rows="3" placeholder="أدخل أي معلومات إضافية"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">إرسال الطلب</button>
+    </form>
+  </div>
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('assets/images/golf.jpg'); background-size: cover; background-position: center; height: 75vh;">
+          <div class="carousel-caption text-start text-white">
+            <h1>مرحبا بكم في عيادتنا</h1>
+            <p>نحن نقدم رعاية طبية متميزة لجميع التخصصات.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('assets/images/tennis.jpg'); background-size: cover; background-position: center; height: 75vh;">
+          <div class="carousel-caption text-start text-white">
+            <h1>أفضل رعاية طبية</h1>
+            <p>فريقنا من الأطباء مستعد لخدمتك.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url('assets/images/yoga.jpg'); background-size: cover; background-position: center; height: 75vh;">
+          <div class="carousel-caption text-start text-white">
+            <h1>خدمات طبية شاملة</h1>
+            <p>رعاية صحية متميزة في بيئة مريحة وآمنة.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
   
 
-  <!-- ملفات الجافاسكربت -->
+
+  <!-- Form Section -->
+  <section class="appointment-form-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">احجز موعدك الآن</h2>
+      <!-- Form -->
+      <form id="appointmentForm" class="bg-light p-4 rounded shadow">
+        <input type="text" id="patientName" name="patient_name" placeholder="اسم المريض" class="form-control mb-3" required>
+        <input type="text" id="phoneNumber" name="phone_number" placeholder="رقم الهاتف" class="form-control mb-3" required>
+        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" class="form-control mb-3" required>
+        <input type="text" id="identityNumber" name="identity_number" placeholder="رقم الهوية" class="form-control mb-3" required>
+        <label for="appointmentDate" class="form-label">اختر تاريخ الموعد:</label>
+        <input type="date" id="appointmentDate" name="appointment_date" class="form-control mb-3" required>
+        <label for="appointmentTime" class="form-label">اختر وقت الموعد:</label>
+        <select id="appointmentTime" name="appointment_time" class="form-select mb-3" required disabled>
+          <option value="">اختر الوقت</option>
+        </select>
+        <input type="text" id="appointmentReason" name="appointment_reason" placeholder="سبب الموعد" class="form-control mb-3" required>
+        <input type="text" id="preferredDoctor" name="preferred_doctor" placeholder="الطبيب المفضل" class="form-control mb-3">
+        <textarea id="additionalNotes" name="additional_notes" placeholder="ملاحظات إضافية" class="form-control mb-3"></textarea>
+        <div class="form-check mb-3">
+          <input type="checkbox" id="hasInsurance" name="has_insurance" class="form-check-input">
+          <label for="hasInsurance" class="form-check-label">لديك تأمين؟</label>
+        </div>
+        <input type="text" id="insuranceCompany" name="insurance_company" placeholder="شركة التأمين" class="form-control mb-3">
+        <input type="text" id="insurancePolicyNumber" name="insurance_policy_number" placeholder="رقم بوليصة التأمين" class="form-control mb-3">
+        <div class="form-check mb-3">
+          <input type="checkbox" id="agreeToTerms" name="agree_to_terms" class="form-check-input" required>
+          <label for="agreeToTerms" class="form-check-label">أوافق على الشروط والأحكام</label>
+        </div>
+        <select id="reminderMethod" name="reminder_method" class="form-select mb-3" required>
+          <option value="email">البريد الإلكتروني</option>
+          <option value="sms">الرسائل النصية</option>
+        </select>
+        <button type="submit" class="btn btn-primary w-100">حجز الموعد</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Files -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/app.js"></script>

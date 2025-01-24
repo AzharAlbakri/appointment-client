@@ -78,6 +78,8 @@ async function updateCalendar() {
 // استدعاء تحديث الرزنامة عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
     updateCalendar();
+
+    
 });
 
 // إرسال طلب حجز الموعد
@@ -120,7 +122,10 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
         insurance_policy_number: document.querySelector('#insurancePolicyNumber').value,
         agree_to_terms: document.querySelector('#agreeToTerms').checked,
         reminder_method: document.querySelector('#reminderMethod').value,
+        // appointment_id: 'ioqd638bJmJv0UGXcGY0'
     };
 
     bookAppointment(formData);
 });
+
+

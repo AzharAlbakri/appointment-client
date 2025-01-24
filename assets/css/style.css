@@ -21,3 +21,52 @@ body {
     border-radius: 5px;
   }
   
+  .top-header,
+.menu-bar {
+  background: rgb(4 104 121) !important;
+}
+
+.menu-bar a.nav-link {
+  color: #ffffff;
+}
+  .hero-slider {
+    position: relative;
+  }
+  
+  button.btn.btn-primary {
+    background: #f77200;
+    border-color: #a34b00;
+  }
+
+  .consultation-form {
+    position: absolute;
+    top: 50%;
+    right: 19.5%; /* الموقع من الجهة اليمنى */
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9); /* خلفية بيضاء مع شفافية */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 25%; /* يشغل ربع القسم */
+    z-index: 10; /* للتأكد أنه يظهر فوق السلايدر */
+  }
+  
+  .consultation-form h4 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .consultation-form .form-control,
+  .consultation-form .form-select {
+    border-radius: 6px;
+  }
+  
+  .consultation-form button {
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+
+  .carousel-caption {
+    bottom: 21.25rem;
+  }
