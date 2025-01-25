@@ -1,27 +1,27 @@
 /* تخصيص الخلفيات */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
-  }
-  
-  /* تنسيق الهيدر */
-  header {
-    background-color: #343a40;
-    color: white;
-  }
-  
-  header a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  /* تنسيق الزر */
-  button {
-    border-radius: 5px;
-  }
-  
-  .top-header,
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* تنسيق الهيدر */
+header {
+  background-color: #343a40;
+  color: white;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+/* تنسيق الزر */
+button {
+  border-radius: 5px;
+}
+
+.top-header,
 .menu-bar {
   background: rgb(4 104 121) !important;
 }
@@ -29,44 +29,301 @@ body {
 .menu-bar a.nav-link {
   color: #ffffff;
 }
-  .hero-slider {
-    position: relative;
-  }
-  
-  button.btn.btn-primary {
-    background: #f77200;
-    border-color: #a34b00;
-  }
 
-  .consultation-form {
-    position: absolute;
-    top: 50%;
-    right: 19.5%; /* الموقع من الجهة اليمنى */
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9); /* خلفية بيضاء مع شفافية */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 25%; /* يشغل ربع القسم */
-    z-index: 10; /* للتأكد أنه يظهر فوق السلايدر */
-  }
-  
-  .consultation-form h4 {
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .consultation-form .form-control,
-  .consultation-form .form-select {
-    border-radius: 6px;
-  }
-  
-  .consultation-form button {
-    margin-top: 10px;
-    border-radius: 6px;
-  }
+.hero-slider {
+  position: relative;
+}
 
-  .carousel-caption {
-    bottom: 21.25rem;
-  }
+button.btn.btn-primary {
+  background: #f77200;
+  border-color: #a34b00;
+}
+
+a.btn.btn-primary {
+  background: #00a791;
+  border-color: #039b87;
+}
+
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: var(--bs-btn-active-color);
+  background-color: #bd5802;
+  border-color: #bd5802;
+}
+
+/* .secondery .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: var(--bs-btn-active-color);
+  background-color: #018372;
+  border-color: #018372;
+} */
+
+.consultation-form {
+  position: absolute;
+  top: 50%;
+  right: 19.5%;
+  /* الموقع من الجهة اليمنى */
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  /* خلفية بيضاء مع شفافية */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 25%;
+  /* يشغل ربع القسم */
+  z-index: 10;
+  /* للتأكد أنه يظهر فوق السلايدر */
+}
+
+.consultation-form h4 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.consultation-form .form-control,
+.consultation-form .form-select {
+  border-radius: 6px;
+}
+
+.consultation-form button {
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.carousel-caption {
+  bottom: 21.25rem;
+  left: 19.5%;
+}
+
+.thin-header {
+  border-bottom: 1px solid #ddd;
+}
+
+.thin-header img {
+  max-height: 100px;
+}
+
+.thin-header a {
+  font-size: 1rem;
+  color: #007bff;
+}
+
+.thin-header a:hover {
+  text-decoration: underline;
+}
+
+.thin-header span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.thin-header p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.thin-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar {
+  position: sticky;
+  top: 58px;
+  /* ارتفاع الـ thin-header */
+  z-index: 1020;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* الطبقة الغامقة */
+  z-index: 0;
+  /* الطبقة الغامقة تحت كل شيء */
+}
+
+.carousel-caption {
+  position: absolute;
+  /* وضع النص فوق الصورة */
+  bottom: 38%;
+  /* مسافة من الأسفل */
+  left: 19.5%;
+  /* مسافة من اليسار */
+  z-index: 2;
+  /* النص يظهر فوق الطبقة الغامقة */
+  color: white;
+  /* لون النص */
+}
+
+.clinic-info {
+  background-color: #f9f9f9;
+}
+
+.clinic-info h2 {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.clinic-info p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.clinic-info img {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #007bff00;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.clinic-info .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clinic-info .btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.clinic-info .row {
+  display: flex;
+  align-items: stretch;
+  /* تضمن أن النص والسلايدر بنفس الارتفاع */
+  height: 480px;
+  /* الارتفاع الثابت المطلوب */
+}
+
+.clinic-info .col-md-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.clinic-info .carousel {
+  height: 100%;
+  /* السلايدر بنفس ارتفاع النص */
+}
+
+.clinic-info .carousel-inner {
+  height: 100%;
+}
+
+.clinic-info .carousel-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* لتمركز الصورة عموديًا */
+  justify-content: center;
+  /* لتمركز الصورة أفقيًا */
+}
+
+.clinic-info .carousel-item img {
+  max-height: 100%;
+  /* ضبط ارتفاع الصورة بما يناسب السلايدر */
+  max-width: 100%;
+  /* ضبط العرض مع الحفاظ على التناسب */
+  object-fit: contain;
+  /* التأكد من أن الصورة تناسب الإطار بدون قص */
+  border-radius: 10px;
+}
+
+#clinicCarousel .carousel-control-prev-icon,
+#clinicCarousel .carousel-control-next-icon {
+  background-color: #007bff00;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+#clinicCarousel .carousel-control-prev,
+#clinicCarousel .carousel-control-next {
+  z-index: 5; /* التأكد من أن الأزرار تظهر فوق الصورة */
+}
+
+#clinicCarousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+footer {
+  background-color: #343a40;
+  /* لون الخلفية */
+  color: #fff;
+}
+
+footer h5 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: #ffffffb3;
+  /* لون أفتح للروابط */
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ffffff;
+  /* أبيض عند التمرير */
+  text-decoration: underline;
+}
+
+footer img {
+  max-height: 33%;
+  border-radius: 6px;
+}
+
+footer ul {
+  padding-left: 0;
+}
+
+footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+footer ul.list-inline {
+  margin: 0;
+  padding: 0;
+}
+
+footer ul.list-inline li {
+  margin-right: 1rem;
+}
+
+#map iframe {
+  border: none;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+  /* لون أيقونات التواصل عند التمرير */
+}
+
+footer.bg-dark.text-white.pt-5.pb-3 {
+  background-color: rgb(4 104 121) !important
+}

@@ -1,205 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clinic Website</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="/assets/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Thin Top Header -->
-  <header class="top-header text-white py-2">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <i class="bi bi-telephone me-2"></i><span>+123 456 789</span> | 
-        <i class="bi bi-whatsapp me-2"></i><span>+987 654 321</span>
-      </div>
-      <div class="text-end">
-        <h5>اسم العيادة</h5>
-        <p>موقع العيادة: شارع 123، المدينة</p>
-        <button class="btn btn-primary">حجز الموعد</button>
-      </div>
-    </div>
-  </header>
+    <!-- Thin Top Header -->
+    <header class="top-header text-white py-2 bg-primary">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- القسم الأيسر -->
+            <div>
+                <div class="d-flex align-items-center mb-1">
+                    <i class="bi bi-telephone me-2"></i>
+                    <span>+34 123456789</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    <span>+34 123456789</span>
+                </div>
+            </div>
 
-  <!-- Another Thin Header -->
-  <header class="thin-header another-header bg-light text-dark py-2">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <img src="assets/images/logo.png" alt="Clinic Logo" height="40">
-        <h5>اسم العيادة</h5>
-      </div>
-      <div class="text-end">
-        <p>وصف العيادة: نقدم خدمات طبية متميزة في جميع التخصصات.</p>
-      </div>
-    </div>
-  </header>
-
-  <!-- Menu Bar -->
-  <nav class="menu-bar navbar navbar-expand-lg ">
-    <div class="container">
-      <div class="d-flex">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Equipo</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Patologías</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Tratamientos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Peritaje Médico-Legal</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-          </ul>
+            <!-- القسم الأيمن -->
+            <div class="text-end">
+                <h5 class="mb-1">Hospital Clinica</h5>
+                <p class="mb-2">Cuidamos tu espalda, mejoramos tu vida</p>
+                <button class="btn btn-primary">
+                    <i class="bi bi-calendar-date me-2"></i>Pide una cita
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="ms-auto">
-        <button class="btn btn-primary">حجز الموعد</button>
-      </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <!-- <section class="hero bg-light text-center py-5">
-    <div class="container">
-      <h1 class="display-4">Welcome to Our Clinic</h1>
-      <p class="lead">Providing top-notch medical care tailored for you.</p>
-    </div>
-  </section> -->
+    <!-- Thin Header -->
+    <header class="thin-header another-header bg-light text-dark py-3"
+        style="position: sticky; top: 0; z-index: 1030; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="container d-flex align-items-center justify-content-between">
+            <!-- Left Section: Logo and Clinic Name -->
+            <div class="d-flex align-items-center">
+                <img src="assets/images/logo.png" alt="Clinic Logo" height="50%" class="me-3">
+                <div>
+                    <a href="#" class="text-decoration-none fw-bold text-dark d-block">
+                        Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
+                    </a>
+                    <span>Cirujano de columna vertebral</span>
+                </div>
+            </div>
 
+            <!-- Right Section: Additional Info -->
+            <div class="text-end">
+                <p class="mb-1 fw-bold">Consultant Spine Surgeon</p>
+                <p class="mb-1">Master degree in sport medicine</p>
+                <p class="mb-0">Associate professor</p>
+            </div>
+        </div>
+    </header>
 
-<!-- Hero Section -->
-<!-- Hero Section -->
-<section class="hero-slider">
-    <!-- Consultation Form -->
-  <div class="consultation-form">
-    <form id="consultationForm">
-      <h4>طلب استشارة</h4>
-      <div class="mb-3">
-        <label for="fullName" class="form-label">الاسم الكامل</label>
-        <input type="text" id="consultationfullName" name="fullName" class="form-control" placeholder="أدخل اسمك" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">البريد الإلكتروني</label>
-        <input type="email" id="consultationemail" name="email" class="form-control" placeholder="example@example.com" required>
-      </div>
-      <div class="mb-3">
-        <label for="phone" class="form-label">رقم الهاتف</label>
-        <input type="text" id="consultationphone" name="phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
-      </div>
-      <div class="mb-3">
-        <label for="contactMethod" class="form-label">طريقة التواصل</label>
-        <select id="consultationcontactMethod" name="contactMethod" class="form-select" required>
-          <option value="email">البريد الإلكتروني</option>
-          <option value="phone">الهاتف</option>
-          <option value="whatsapp">واتساب</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="consultationType" class="form-label">نوع الاستشارة</label>
-        <select id="consultationconsultationType" name="consultationType" class="form-select" required>
-          <option value="general">استشارة عامة</option>
-          <option value="medical">استشارة طبية</option>
-          <option value="legal">استشارة قانونية</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="additionalInfo" class="form-label">معلومات إضافية</label>
-        <textarea id="consultationadditionalInfo" name="additionalInfo" class="form-control" rows="3" placeholder="أدخل أي معلومات إضافية"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">إرسال الطلب</button>
-    </form>
-  </div>
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        
-      <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url('assets/images/golf.jpg'); background-size: cover; background-position: center; height: 75vh;">
-          <div class="carousel-caption text-start text-white">
-            <h1>مرحبا بكم في عيادتنا</h1>
-            <p>نحن نقدم رعاية طبية متميزة لجميع التخصصات.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+    <!-- Menu Bar -->
+    <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
+        style="position: sticky; top: 133px; z-index: 1020;">
+        <div class="container">
+            <div class="d-flex">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Equipo</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Patologías</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Tratamientos</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Peritaje Médico-Legal</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ms-auto">
+                <button class="btn btn-primary">
+                    <i class="bi bi-calendar-date me-2"></i>Pide una cita
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-slider">
+        <!-- Consultation Form -->
+        <div class="consultation-form">
+            <form id="consultationForm">
+                <h4>Solicitud de Consulta</h4>
+                <!-- nombre completo -->
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Nombre completo</label>
+                    <input type="text" id="consultationfullName" name="fullName" class="form-control"
+                        placeholder="Ingresa tu nombre" required>
+                </div>
+
+                <!-- correo electrónico y teléfono en la misma fila -->
+                <div class="mb-3 row">
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="consultationemail" name="email" class="form-control"
+                            placeholder="ejemplo@ejemplo.com" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Número de teléfono</label>
+                        <input type="text" id="consultationphone" name="phone" class="form-control"
+                            placeholder="Ingresa tu número de teléfono" required>
+                    </div>
+                </div>
+
+                <!-- método de contacto y tipo de consulta en la misma fila -->
+                <div class="mb-3 row">
+                    <div class="col-md-6">
+                        <label for="contactMethod" class="form-label">Método de contacto</label>
+                        <select id="consultationcontactMethod" name="contactMethod" class="form-select" required>
+                            <option value="email">Correo electrónico</option>
+                            <option value="phone">Teléfono</option>
+                            <option value="whatsapp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="consultationType" class="form-label">Tipo de consulta</label>
+                        <select id="consultationconsultationType" name="consultationType" class="form-select" required>
+                            <option value="general">Consulta general</option>
+                            <option value="medical">Consulta médica</option>
+                            <option value="legal">Consulta legal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- información adicional -->
+                <div class="mb-3">
+                    <label for="additionalInfo" class="form-label">Información adicional</label>
+                    <textarea id="consultationadditionalInfo" name="additionalInfo" class="form-control" rows="3"
+                        placeholder="Ingresa cualquier información adicional"></textarea>
+                </div>
+
+                <!-- botón de enviar -->
+                <button type="submit" class="btn btn-primary w-100">Enviar solicitud</button>
+            </form>
+        </div>
+
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active"
+                    style="background-image: url('assets/images/golf.jpg'); background-size: cover; background-position: center; height: 75vh;">
+                    <div class="carousel-caption text-start text-white">
+                        <h1> Bienvenidos a nuestra clínica </h1>
+                        <p>Ofrecemos atención médica de calidad en todas las especialidades.</p>
+                        <a href="#" class="btn btn-primary secondery">Leer más</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item"
+                    style="background-image: url('assets/images/tennis.jpg'); background-size: cover; background-position: center; height: 75vh;">
+                    <div class="carousel-caption text-start text-white">
+                        <h1>La mejor atención médica</h1>
+                        <p>Nuestro equipo de médicos está listo para atenderle.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item"
+                    style="background-image: url('assets/images/yoga.jpg'); background-size: cover; background-position: center; height: 75vh;">
+                    <div class="carousel-caption text-start text-white">
+                        <h1>Servicios médicos integrales</h1>
+                        <p>Atención sanitaria de calidad en un ambiente cómodo y seguro.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="appointment-form-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Agenda tu cita ahora</h2>
+            <!-- Form -->
+            <form id="appointmentForm" class="bg-light p-4 rounded shadow">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="patientName" class="form-label">Nombre del paciente</label>
+                        <input type="text" id="patientName" name="patient_name" class="form-control"
+                            placeholder="Ingresa el nombre del paciente" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                        <input type="text" id="phoneNumber" name="phone_number" class="form-control"
+                            placeholder="Ingresa el número de teléfono" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="example@example.com" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="identityNumber" class="form-label">Número de identidad</label>
+                        <input type="text" id="identityNumber" name="identity_number" class="form-control"
+                            placeholder="Ingresa el número de identidad" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="appointmentDate" class="form-label">Fecha de la cita</label>
+                        <input type="date" id="appointmentDate" name="appointment_date" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="appointmentTime" class="form-label">Hora de la cita</label>
+                        <select id="appointmentTime" name="appointment_time" class="form-select" required disabled>
+                            <option value="">Selecciona la hora</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="appointmentReason" class="form-label">Motivo de la cita</label>
+                        <input type="text" id="appointmentReason" name="appointment_reason" class="form-control"
+                            placeholder="Ingresa el motivo de la cita" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="preferredDoctor" class="form-label">Doctor preferido</label>
+                        <input type="text" id="preferredDoctor" name="preferred_doctor" class="form-control"
+                            placeholder="Nombre del doctor preferido">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="additionalNotes" class="form-label">Notas adicionales</label>
+                        <textarea id="additionalNotes" name="additional_notes" class="form-control" rows="1"
+                            placeholder="Ingresa tus notas"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="hasInsurance" name="has_insurance" class="form-check-input">
+                            <label for="hasInsurance" class="form-check-label">¿Tienes seguro?</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="insuranceCompany" class="form-label">Compañía de seguros</label>
+                        <input type="text" id="insuranceCompany" name="insurance_company" class="form-control"
+                            placeholder="Nombre de la compañía de seguros">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="insurancePolicyNumber" class="form-label">Número de la póliza de seguro</label>
+                        <input type="text" id="insurancePolicyNumber" name="insurance_policy_number"
+                            class="form-control" placeholder="Número de la póliza">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="agreeToTerms" name="agree_to_terms" class="form-check-input"
+                                required>
+                            <label for="agreeToTerms" class="form-check-label">Acepto los términos y condiciones</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="reminderMethod" class="form-label">Método de recordatorio</label>
+                        <select id="reminderMethod" name="reminder_method" class="form-select" required>
+                            <option value="email">Correo electrónico</option>
+                            <option value="sms">Mensaje de texto</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Reservar cita</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="clinic-info py-5">
+        <div class="container">
+          <div class="row">
+            <!-- النص -->
+            <div class="col-md-6">
+              <h2>Acerca de nuestra clínica</h2>
+              <p>
+                El Dr. Aaron es un cirujano de columna con especialista en traumatología y cirugía ortopédica y con amplia
+                experiencia, establecido en Extremadura. Ha recibido formación en destacados centros de excelencia en
+                cirugía de columna en España, el Reino Unido y los Estados Unidos.
+              </p>
+              <p>
+                Está especializado en todo el espectro de problemas de columna, incluyendo dolor ciático, dolor de
+                espalda (lumbago), dolor de cuello, deformidades infantiles y del adulto (escoliosis), traumatismos,
+                infecciones y cirugía de tumores.
+              </p>
+            </div>
+            <!-- السلايدر -->
+            <div class="col-md-6">
+              <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/images/clinic1.jpg" alt="Clinic Image 1">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/images/clinic2.png" alt="Clinic Image 2">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/images/clinic3.jpg" alt="Clinic Image 3">
+                  </div>
+                </div>
+                <!-- أزرار التحكم -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url('assets/images/tennis.jpg'); background-size: cover; background-position: center; height: 75vh;">
-          <div class="carousel-caption text-start text-white">
-            <h1>أفضل رعاية طبية</h1>
-            <p>فريقنا من الأطباء مستعد لخدمتك.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+      </section>
+      
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+          <div class="row">
+            <!-- معلومات الاتصال -->
+            <div class="col-md-4 mb-4">
+              <h5>Contáctenos</h5>
+              <ul class="list-unstyled">
+                <li>Tel: 946 941 347</li>
+                <li>Móvil: 696 13 25 38</li>
+                <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
+              </ul>
+              <!-- روابط وسائل التواصل -->
+              <div class="social-icons mt-3">
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+      
+            <!-- روابط التنقل -->
+            <div class="col-md-4 mb-4">
+              <h5>Enlaces</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Equipo</a></li>
+                <li><a href="#" class="text-white">Patologías</a></li>
+                <li><a href="#" class="text-white">Tratamientos</a></li>
+                <li><a href="#" class="text-white">Peritaje Médico-Legal</a></li>
+                <li><a href="#" class="text-white">Contacto</a></li>
+              </ul>
+            </div>
+      
+            <!-- الشعار والروابط القانونية -->
+            <div class="col-md-4 mb-4 text-center">
+              <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
+              <p>Todos los derechos reservados</p>
+              <ul class="list-inline">
+                <li class="list-inline-item"><a href="#" class="text-white">Aviso legal</a></li>
+                <li class="list-inline-item"><a href="#" class="text-white">Política de privacidad</a></li>
+                <li class="list-inline-item"><a href="#" class="text-white">Política de cookies</a></li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- الخريطة والنشرة الإخبارية -->
+          <div class="row mt-4">
+            <!-- الخريطة -->
+            <div class="col-md-6 mb-4">
+              <h5>Ubicación</h5>
+              <div id="map" style="height: 200px; background-color: #f8f9fa;">
+                <!-- يمكنك استبدال الرابط برابط Google Maps المخصص -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
+                  width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+      
+            <!-- النشرة الإخبارية -->
+            <div class="col-md-6 mb-4">
+              <h5>Suscríbase a nuestro boletín</h5>
+              <form>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Ingrese su correo electrónico" required>
+                </div>
+                <button type="submit" class="btn btn-primary secondery">Suscribirse</button>
+              </form>
+            </div>
+          </div>
+      
+          <!-- المراجعات -->
+          <div class="row mt-4 text-center">
+            <div class="col">
+              <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
+                <i class="bi bi-star-fill text-warning me-2"></i>Ver nuestras reseñas en Google
+              </a>
+            </div>
+          </div>
+      
+          <!-- حقوق الطبع والنشر -->
+          <div class="row mt-4">
+            <div class="col text-center">
+              <p class="mb-0">&copy; 2025 Biziondo. Todos los derechos reservados.</p>
+            </div>
           </div>
         </div>
-        <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url('assets/images/yoga.jpg'); background-size: cover; background-position: center; height: 75vh;">
-          <div class="carousel-caption text-start text-white">
-            <h1>خدمات طبية شاملة</h1>
-            <p>رعاية صحية متميزة في بيئة مريحة وآمنة.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
-      <!-- Carousel Controls -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
-  
+      </footer>
+      
 
-
-  <!-- Form Section -->
-  <section class="appointment-form-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-4">احجز موعدك الآن</h2>
-      <!-- Form -->
-      <form id="appointmentForm" class="bg-light p-4 rounded shadow">
-        <input type="text" id="patientName" name="patient_name" placeholder="اسم المريض" class="form-control mb-3" required>
-        <input type="text" id="phoneNumber" name="phone_number" placeholder="رقم الهاتف" class="form-control mb-3" required>
-        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" class="form-control mb-3" required>
-        <input type="text" id="identityNumber" name="identity_number" placeholder="رقم الهوية" class="form-control mb-3" required>
-        <label for="appointmentDate" class="form-label">اختر تاريخ الموعد:</label>
-        <input type="date" id="appointmentDate" name="appointment_date" class="form-control mb-3" required>
-        <label for="appointmentTime" class="form-label">اختر وقت الموعد:</label>
-        <select id="appointmentTime" name="appointment_time" class="form-select mb-3" required disabled>
-          <option value="">اختر الوقت</option>
-        </select>
-        <input type="text" id="appointmentReason" name="appointment_reason" placeholder="سبب الموعد" class="form-control mb-3" required>
-        <input type="text" id="preferredDoctor" name="preferred_doctor" placeholder="الطبيب المفضل" class="form-control mb-3">
-        <textarea id="additionalNotes" name="additional_notes" placeholder="ملاحظات إضافية" class="form-control mb-3"></textarea>
-        <div class="form-check mb-3">
-          <input type="checkbox" id="hasInsurance" name="has_insurance" class="form-check-input">
-          <label for="hasInsurance" class="form-check-label">لديك تأمين؟</label>
-        </div>
-        <input type="text" id="insuranceCompany" name="insurance_company" placeholder="شركة التأمين" class="form-control mb-3">
-        <input type="text" id="insurancePolicyNumber" name="insurance_policy_number" placeholder="رقم بوليصة التأمين" class="form-control mb-3">
-        <div class="form-check mb-3">
-          <input type="checkbox" id="agreeToTerms" name="agree_to_terms" class="form-check-input" required>
-          <label for="agreeToTerms" class="form-check-label">أوافق على الشروط والأحكام</label>
-        </div>
-        <select id="reminderMethod" name="reminder_method" class="form-select mb-3" required>
-          <option value="email">البريد الإلكتروني</option>
-          <option value="sms">الرسائل النصية</option>
-        </select>
-        <button type="submit" class="btn btn-primary w-100">حجز الموعد</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Files -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/script.js"></script>
+    <!-- Files -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

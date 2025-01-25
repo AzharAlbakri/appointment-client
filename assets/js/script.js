@@ -129,3 +129,42 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
 });
 
 
+// التعامل مع إرسال طلب الاستشارة
+async function submitConsultationForm(formData) {
+    try {
+      // إرسال الطلب إلى API إضافة المستخدم
+      const response = await fetch(`${BASE_URL}/addUser`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        alert(`تم إرسال طلب الاستشارة بنجاح! معرف المستخدم: ${result.userId}`);
+      } else {
+        alert(`خطأ: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('خطأ أثناء إرسال طلب الاستشارة:', error);
+      alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+    }
+  }
+  
+  // التعامل مع فورم طلب الاستشارة
+  document.querySelector('#consultationForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+  
+    // جمع بيانات الفورم
+    const formData = {
+      fullName: document.querySelector('#consultationfullName').value,
+      email: document.querySelector('#consultationemail').value,
+      phone: document.querySelector('#consultationphone').value,
+      contactMethod: document.querySelector('#consultationcontactMethod').value,
+      consultationType: document.querySelector('#consultationconsultationType').value,
+      additionalInfo: document.querySelector('#consultationadditionalInfo').value,
+    };
+  
+    // إرسال البيانات إلى السيرفر
+    submitConsultationForm(formData);
+  });
