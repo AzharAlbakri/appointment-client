@@ -18,7 +18,7 @@
     <!-- Thin Top Header -->
     <header class="top-header text-white py-2 bg-primary">
         <div class="container d-flex justify-content-between align-items-center">
-            <!-- القسم الأيسر -->
+            <!-- Left Section -->
             <div>
                 <div class="d-flex align-items-center mb-1">
                     <i class="bi bi-telephone me-2"></i>
@@ -30,16 +30,17 @@
                 </div>
             </div>
 
-            <!-- القسم الأيمن -->
+            <!-- Right Section -->
             <div class="text-end">
                 <h5 class="mb-1">Hospital Clinica</h5>
-                <p class="mb-2">Cuidamos tu espalda, mejoramos tu vida</p>
+                <p class="mb-2">We take care of your back, we improve your life</p>
                 <button class="btn btn-primary">
-                    <i class="bi bi-calendar-date me-2"></i>Pide una cita
+                    <i class="bi bi-calendar-date me-2"></i>Book an appointment
                 </button>
             </div>
         </div>
     </header>
+
 
     <!-- Thin Header -->
     <header class="thin-header another-header bg-light text-dark py-3"
@@ -52,7 +53,7 @@
                     <a href="#" class="text-decoration-none fw-bold text-dark d-block">
                         Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
                     </a>
-                    <span>Cirujano de columna vertebral</span>
+                    <span>Spinal Surgeon</span>
                 </div>
             </div>
 
@@ -65,6 +66,7 @@
         </div>
     </header>
 
+
     <!-- Menu Bar -->
     <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
         style="position: sticky; top: 133px; z-index: 1020;">
@@ -76,17 +78,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Equipo</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Patologías</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Tratamientos</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Peritaje Médico-Legal</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Team</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Pathologies</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Treatments</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Medical-Legal Expertise</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="ms-auto">
                 <button class="btn btn-primary">
-                    <i class="bi bi-calendar-date me-2"></i>Pide una cita
+                    <i class="bi bi-calendar-date me-2"></i>Book an Appointment
                 </button>
             </div>
         </div>
@@ -97,57 +99,57 @@
         <!-- Consultation Form -->
         <div class="consultation-form">
             <form id="consultationForm">
-                <h4>Solicitud de Consulta</h4>
-                <!-- nombre completo -->
+                <h4>Consultation Request</h4>
+                <!-- Full Name -->
                 <div class="mb-3">
-                    <label for="fullName" class="form-label">Nombre completo</label>
+                    <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" id="consultationfullName" name="fullName" class="form-control"
-                        placeholder="Ingresa tu nombre" required>
+                        placeholder="Enter your name" required>
                 </div>
 
-                <!-- correo electrónico y teléfono en la misma fila -->
+                <!-- Email and Phone Number in the same row -->
                 <div class="mb-3 row">
                     <div class="col-md-6">
-                        <label for="email" class="form-label">Correo electrónico</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="email" id="consultationemail" name="email" class="form-control"
-                            placeholder="ejemplo@ejemplo.com" required>
+                            placeholder="example@example.com" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="phone" class="form-label">Número de teléfono</label>
+                        <label for="phone" class="form-label">Phone Number</label>
                         <input type="text" id="consultationphone" name="phone" class="form-control"
-                            placeholder="Ingresa tu número de teléfono" required>
+                            placeholder="Enter your phone number" required>
                     </div>
                 </div>
 
-                <!-- método de contacto y tipo de consulta en la misma fila -->
+                <!-- Contact Method and Consultation Type in the same row -->
                 <div class="mb-3 row">
                     <div class="col-md-6">
-                        <label for="contactMethod" class="form-label">Método de contacto</label>
+                        <label for="contactMethod" class="form-label">Contact Method</label>
                         <select id="consultationcontactMethod" name="contactMethod" class="form-select" required>
-                            <option value="email">Correo electrónico</option>
-                            <option value="phone">Teléfono</option>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
                             <option value="whatsapp">WhatsApp</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="consultationType" class="form-label">Tipo de consulta</label>
+                        <label for="consultationType" class="form-label">Consultation Type</label>
                         <select id="consultationconsultationType" name="consultationType" class="form-select" required>
-                            <option value="general">Consulta general</option>
-                            <option value="medical">Consulta médica</option>
-                            <option value="legal">Consulta legal</option>
+                            <option value="general">General Consultation</option>
+                            <option value="medical">Medical Consultation</option>
+                            <option value="legal">Legal Consultation</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- información adicional -->
+                <!-- Additional Information -->
                 <div class="mb-3">
-                    <label for="additionalInfo" class="form-label">Información adicional</label>
+                    <label for="additionalInfo" class="form-label">Additional Information</label>
                     <textarea id="consultationadditionalInfo" name="additionalInfo" class="form-control" rows="3"
-                        placeholder="Ingresa cualquier información adicional"></textarea>
+                        placeholder="Enter any additional information"></textarea>
                 </div>
 
-                <!-- botón de enviar -->
-                <button type="submit" class="btn btn-primary w-100">Enviar solicitud</button>
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">Submit Request</button>
             </form>
         </div>
 
@@ -157,28 +159,27 @@
                 <div class="carousel-item active"
                     style="background-image: url('assets/images/golf.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1> Bienvenidos a nuestra clínica </h1>
-                        <p>Ofrecemos atención médica de calidad en todas las especialidades.</p>
-                        <a href="#" class="btn btn-primary secondery">Leer más</a>
+                        <h1>Welcome to Our Clinic</h1>
+                        <p>We offer high-quality medical care in all specialties.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-item"
                     style="background-image: url('assets/images/tennis.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1>La mejor atención médica</h1>
-                        <p>Nuestro equipo de médicos está listo para atenderle.</p>
-                        <a href="#" class="btn btn-primary">Leer más</a>
+                        <h1>The Best Medical Care</h1>
+                        <p>Our team of doctors is ready to assist you.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="carousel-item"
                     style="background-image: url('assets/images/yoga.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1>Servicios médicos integrales</h1>
-                        <p>Atención sanitaria de calidad en un ambiente cómodo y seguro.</p>
-                        <a href="#" class="btn btn-primary">Leer más</a>
-
+                        <h1>Comprehensive Medical Services</h1>
+                        <p>High-quality healthcare in a comfortable and safe environment.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
@@ -194,79 +195,80 @@
         </div>
     </section>
 
+
     <!-- Form Section -->
     <section class="appointment-form-section py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Agenda tu cita ahora</h2>
+            <h2 class="text-center mb-4">Schedule Your Appointment Now</h2>
             <!-- Form -->
             <form id="appointmentForm" class="bg-light p-4 rounded shadow">
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="patientName" class="form-label">Nombre del paciente</label>
+                        <label for="patientName" class="form-label">Patient's Name</label>
                         <input type="text" id="patientName" name="patient_name" class="form-control"
-                            placeholder="Ingresa el nombre del paciente" required>
+                            placeholder="Enter patient's name" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
                         <input type="text" id="phoneNumber" name="phone_number" class="form-control"
-                            placeholder="Ingresa el número de teléfono" required>
+                            placeholder="Enter phone number" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="email" class="form-label">Correo electrónico</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control"
                             placeholder="example@example.com" required>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="identityNumber" class="form-label">Número de identidad</label>
+                        <label for="identityNumber" class="form-label">Identity Number</label>
                         <input type="text" id="identityNumber" name="identity_number" class="form-control"
-                            placeholder="Ingresa el número de identidad" required>
+                            placeholder="Enter identity number" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="appointmentDate" class="form-label">Fecha de la cita</label>
+                        <label for="appointmentDate" class="form-label">Appointment Date</label>
                         <input type="date" id="appointmentDate" name="appointment_date" class="form-control" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="appointmentTime" class="form-label">Hora de la cita</label>
+                        <label for="appointmentTime" class="form-label">Appointment Time</label>
                         <select id="appointmentTime" name="appointment_time" class="form-select" required disabled>
-                            <option value="">Selecciona la hora</option>
+                            <option value="">Select time</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="appointmentReason" class="form-label">Motivo de la cita</label>
+                        <label for="appointmentReason" class="form-label">Reason for Appointment</label>
                         <input type="text" id="appointmentReason" name="appointment_reason" class="form-control"
-                            placeholder="Ingresa el motivo de la cita" required>
+                            placeholder="Enter reason for appointment" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="preferredDoctor" class="form-label">Doctor preferido</label>
+                        <label for="preferredDoctor" class="form-label">Preferred Doctor</label>
                         <input type="text" id="preferredDoctor" name="preferred_doctor" class="form-control"
-                            placeholder="Nombre del doctor preferido">
+                            placeholder="Preferred doctor's name">
                     </div>
                     <div class="col-md-4">
-                        <label for="additionalNotes" class="form-label">Notas adicionales</label>
+                        <label for="additionalNotes" class="form-label">Additional Notes</label>
                         <textarea id="additionalNotes" name="additional_notes" class="form-control" rows="1"
-                            placeholder="Ingresa tus notas"></textarea>
+                            placeholder="Enter your notes"></textarea>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <div class="form-check">
                             <input type="checkbox" id="hasInsurance" name="has_insurance" class="form-check-input">
-                            <label for="hasInsurance" class="form-check-label">¿Tienes seguro?</label>
+                            <label for="hasInsurance" class="form-check-label">Do you have insurance?</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="insuranceCompany" class="form-label">Compañía de seguros</label>
+                        <label for="insuranceCompany" class="form-label">Insurance Company</label>
                         <input type="text" id="insuranceCompany" name="insurance_company" class="form-control"
-                            placeholder="Nombre de la compañía de seguros">
+                            placeholder="Insurance company name">
                     </div>
                     <div class="col-md-4">
-                        <label for="insurancePolicyNumber" class="form-label">Número de la póliza de seguro</label>
+                        <label for="insurancePolicyNumber" class="form-label">Insurance Policy Number</label>
                         <input type="text" id="insurancePolicyNumber" name="insurance_policy_number"
-                            class="form-control" placeholder="Número de la póliza">
+                            class="form-control" placeholder="Policy number">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -274,158 +276,161 @@
                         <div class="form-check">
                             <input type="checkbox" id="agreeToTerms" name="agree_to_terms" class="form-check-input"
                                 required>
-                            <label for="agreeToTerms" class="form-check-label">Acepto los términos y condiciones</label>
+                            <label for="agreeToTerms" class="form-check-label">I agree to the terms and
+                                conditions</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="reminderMethod" class="form-label">Método de recordatorio</label>
+                        <label for="reminderMethod" class="form-label">Reminder Method</label>
                         <select id="reminderMethod" name="reminder_method" class="form-select" required>
-                            <option value="email">Correo electrónico</option>
-                            <option value="sms">Mensaje de texto</option>
+                            <option value="email">Email</option>
+                            <option value="sms">SMS</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Reservar cita</button>
+                <button type="submit" class="btn btn-primary w-100">Book Appointment</button>
             </form>
-
         </div>
     </section>
 
     <!-- About -->
     <section class="clinic-info py-5">
         <div class="container">
-          <div class="row">
-            <!-- النص -->
-            <div class="col-md-6">
-              <h2>Acerca de nuestra clínica</h2>
-              <p>
-                El Dr. Aaron es un cirujano de columna con especialista en traumatología y cirugía ortopédica y con amplia
-                experiencia, establecido en Extremadura. Ha recibido formación en destacados centros de excelencia en
-                cirugía de columna en España, el Reino Unido y los Estados Unidos.
-              </p>
-              <p>
-                Está especializado en todo el espectro de problemas de columna, incluyendo dolor ciático, dolor de
-                espalda (lumbago), dolor de cuello, deformidades infantiles y del adulto (escoliosis), traumatismos,
-                infecciones y cirugía de tumores.
-              </p>
-            </div>
-            <!-- السلايدر -->
-            <div class="col-md-6">
-              <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="assets/images/clinic1.jpg" alt="Clinic Image 1">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/clinic2.png" alt="Clinic Image 2">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/clinic3.jpg" alt="Clinic Image 3">
-                  </div>
+            <div class="row">
+                <!-- Text -->
+                <div class="col-md-6">
+                    <h2>About Our Clinic</h2>
+                    <p>
+                        Dr. Aaron is a spine surgeon specializing in traumatology and orthopedic surgery, with extensive
+                        experience, based in Extremadura. He has received training at prestigious centers of excellence
+                        in
+                        spine surgery in Spain, the United Kingdom, and the United States.
+                    </p>
+                    <p>
+                        He specializes in the entire spectrum of spine problems, including sciatica, back pain
+                        (lumbago), neck
+                        pain, childhood and adult deformities (scoliosis), trauma, infections, and tumor surgery.
+                    </p>
                 </div>
-                <!-- أزرار التحكم -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
+                <!-- Slider -->
+                <div class="col-md-6">
+                    <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="assets/images/clinic1.jpg" alt="Clinic Image 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/clinic2.png" alt="Clinic Image 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/clinic3.jpg" alt="Clinic Image 3">
+                            </div>
+                        </div>
+                        <!-- Control buttons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
+    </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-3">
-        <div class="container">
-          <div class="row">
-            <!-- معلومات الاتصال -->
+   <!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information -->
             <div class="col-md-4 mb-4">
-              <h5>Contáctenos</h5>
-              <ul class="list-unstyled">
-                <li>Tel: 946 941 347</li>
-                <li>Móvil: 696 13 25 38</li>
-                <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
-              </ul>
-              <!-- روابط وسائل التواصل -->
-              <div class="social-icons mt-3">
-                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-              </div>
-            </div>
-      
-            <!-- روابط التنقل -->
-            <div class="col-md-4 mb-4">
-              <h5>Enlaces</h5>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Equipo</a></li>
-                <li><a href="#" class="text-white">Patologías</a></li>
-                <li><a href="#" class="text-white">Tratamientos</a></li>
-                <li><a href="#" class="text-white">Peritaje Médico-Legal</a></li>
-                <li><a href="#" class="text-white">Contacto</a></li>
-              </ul>
-            </div>
-      
-            <!-- الشعار والروابط القانونية -->
-            <div class="col-md-4 mb-4 text-center">
-              <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
-              <p>Todos los derechos reservados</p>
-              <ul class="list-inline">
-                <li class="list-inline-item"><a href="#" class="text-white">Aviso legal</a></li>
-                <li class="list-inline-item"><a href="#" class="text-white">Política de privacidad</a></li>
-                <li class="list-inline-item"><a href="#" class="text-white">Política de cookies</a></li>
-              </ul>
-            </div>
-          </div>
-      
-          <!-- الخريطة والنشرة الإخبارية -->
-          <div class="row mt-4">
-            <!-- الخريطة -->
-            <div class="col-md-6 mb-4">
-              <h5>Ubicación</h5>
-              <div id="map" style="height: 200px; background-color: #f8f9fa;">
-                <!-- يمكنك استبدال الرابط برابط Google Maps المخصص -->
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
-                  width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-              </div>
-            </div>
-      
-            <!-- النشرة الإخبارية -->
-            <div class="col-md-6 mb-4">
-              <h5>Suscríbase a nuestro boletín</h5>
-              <form>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Ingrese su correo electrónico" required>
+                <h5>Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li>Tel: 946 941 347</li>
+                    <li>Mobile: 696 13 25 38</li>
+                    <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
+                </ul>
+                <!-- Social Media Links -->
+                <div class="social-icons mt-3">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
                 </div>
-                <button type="submit" class="btn btn-primary secondery">Suscribirse</button>
-              </form>
             </div>
-          </div>
-      
-          <!-- المراجعات -->
-          <div class="row mt-4 text-center">
-            <div class="col">
-              <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
-                <i class="bi bi-star-fill text-warning me-2"></i>Ver nuestras reseñas en Google
-              </a>
+
+            <!-- Navigation Links -->
+            <div class="col-md-4 mb-4">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Team</a></li>
+                    <li><a href="#" class="text-white">Conditions</a></li>
+                    <li><a href="#" class="text-white">Treatments</a></li>
+                    <li><a href="#" class="text-white">Medical-Legal Expertise</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
             </div>
-          </div>
-      
-          <!-- حقوق الطبع والنشر -->
-          <div class="row mt-4">
-            <div class="col text-center">
-              <p class="mb-0">&copy; 2025 Biziondo. Todos los derechos reservados.</p>
+
+            <!-- Logo and Legal Links -->
+            <div class="col-md-4 mb-4 text-center">
+                <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
+                <p>All rights reserved</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#" class="text-white">Legal Notice</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="#" class="text-white">Cookie Policy</a></li>
+                </ul>
             </div>
-          </div>
         </div>
-      </footer>
-      
+
+        <!-- Map and Newsletter -->
+        <div class="row mt-4">
+            <!-- Map -->
+            <div class="col-md-6 mb-4">
+                <h5>Location</h5>
+                <div id="map" style="height: 200px; background-color: #f8f9fa;">
+                    <!-- You can replace the link with your custom Google Maps link -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
+                        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-md-6 mb-4">
+                <h5>Subscribe to our Newsletter</h5>
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary secondery">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="row mt-4 text-center">
+            <div class="col">
+                <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
+                    <i class="bi bi-star-fill text-warning me-2"></i>See our reviews on Google
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <p class="mb-0">&copy; 2025 Biziondo. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 
     <!-- Files -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
