@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="assets/css/signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+        <!-- شعار العيادة -->
+        <img src="./assets/images/logo.png" alt="Clinic Logo" class="clinic-logo">
+
+        <div class="signup-box p-4 shadow bg-white">
+            <h2 class="text-center">Make the most of your health</h2>
+            <p class="text-center">Create an account to book appointments</p>
+
+            <!-- نموذج التسجيل -->
+            <form id="signupForm">
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your full name" required id="fullName">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="Enter your email" required id="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter a password" required id="password">
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="stay-logged-in" class="form-check-input">
+                    <label for="stay-logged-in" class="form-check-label">Keep me logged in</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Agree & Join</button>
+            </form>
+            
+
+            <hr>
+            <button id="google-login" class="btn btn-outline-dark w-100 mb-2"><i class="bi bi-google"></i> Continue with Google</button>
+            <button id="microsoft-login" class="btn btn-outline-dark w-100"><i class="bi bi-microsoft"></i> Continue with Microsoft</button>
+
+            <p class="text-center mt-3">Already have an account? <a href="login.html">Sign in</a></p>
+        </div>
+
+        <!-- الروابط في الأسفل -->
+        <div class="footer-links mt-4">
+            <a href="index.html">Home</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms</a>
+        </div>
+    </div>
+
+      <!-- Files -->
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="assets/js/app.js"></script>
+      <script src="assets/js/api.js"></script>
+      <script src="assets/js/signup.js"></script>
+</body>
+</html>

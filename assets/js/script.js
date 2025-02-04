@@ -168,3 +168,4 @@ async function submitConsultationForm(formData) {
     // إرسال البيانات إلى السيرفر
     submitConsultationForm(formData);
   });
+
