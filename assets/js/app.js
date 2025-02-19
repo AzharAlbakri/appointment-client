@@ -22,8 +22,13 @@ $(document).ready(function () {
   // });
 
 
+  const API_BASE_URL = 'https://user-api-server.onrender.com/';
+
+
   $('#google-login').click(function () {
-    window.location.href = 'http://192.168.1.33:3000/api/auth/google';
+    window.location.href = API_BASE_URL;
+    // window.location.href = 'http://192.168.1.33:3000/api/auth/google';
+
   });
 
   $('#microsoft-login').click(function () {
