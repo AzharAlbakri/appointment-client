@@ -22,7 +22,7 @@ $(document).ready(function () {
   // });
 
 
-  const API_BASE_URL = 'https://user-api-server.onrender.com/';
+  const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 
   $('#google-login').click(function () {
