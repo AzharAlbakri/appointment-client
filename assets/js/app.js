@@ -1,9 +1,8 @@
-alert("app.js");
 
 $(document).ready(function () {
   // عند الضغط على زر الحجز
   $('#reservationButton').on('click', function () {
-    alert('تم الضغط على زر الحجز!');
+    alert('Booking button clicked!');
   });
 
 
@@ -95,7 +94,7 @@ $(document).ready(function () {
   });
 
  // جعل الدالة متاحة عالميًا
-window.loadCategories = function (serviceId) {
+ window.loadCategories = function (serviceId) {
   const lang = 'en'; 
 
   $.ajax({
@@ -116,7 +115,7 @@ window.loadCategories = function (serviceId) {
                           <div class="card-body">
                               <h5 class="card-title">${title}</h5>
                               <p class="card-text">${description}</p>
-                              <a href="#" class="btn btn-primary">Read More</a>
+                              <a href="javascript:void(0);" class="btn btn-primary">Read More</a>
                           </div>
                       </div>
                       <div class="row subcategories-container" id="subcategories-${categoryId}" style="display: none;"></div>
@@ -125,7 +124,8 @@ window.loadCategories = function (serviceId) {
           });
 
           // عند الضغط على كارد الفئة
-          $('.category-card').click(function () {
+          $('.category-card').click(function (event) {
+              event.preventDefault();  // لمنع التغيير في الرابط
               const categoryId = $(this).data('category-id');
               
               // إزالة الحدود الزرقاء من جميع الكروت وإخفاء الفئات الفرعية
@@ -134,6 +134,7 @@ window.loadCategories = function (serviceId) {
 
               // إضافة الحدود الزرقاء للفئة المختارة وإظهار الفئات الفرعية
               $(this).addClass('border-primary');
+              
               loadSubcategories(serviceId, categoryId);
           });
       },
@@ -143,8 +144,12 @@ window.loadCategories = function (serviceId) {
   });
 };
 
+
 // تحميل الفئات الفرعية
 window.loadSubcategories = function (serviceId, categoryId) {
+  console.log("serviceId", serviceId);
+  console.log("categoryId", categoryId);
+
   $.ajax({
     url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategories`,
     method: "GET",
@@ -152,18 +157,31 @@ window.loadSubcategories = function (serviceId, categoryId) {
       const subcategoriesContainer = $(`#subcategories-${categoryId}`);
       subcategoriesContainer.empty();
 
-      subcategories.forEach((subcategory) => {
+      // إضافة حاوية الفئات الفرعية التي تحتوي على الكروت
+      subcategoriesContainer.append('<div class="subcategory-row">');
+
+      subcategories.forEach((subcategory, index) => {
+        // توزيع الكروت على صفوف مكونة من 3 كروت
+        if (index % 3 === 0 && index !== 0) {
+          subcategoriesContainer.append('</div><div class="subcategory-row">'); // إضافة صف جديد بعد 3 كروت
+        }
+
+        // إضافة الكرت الخاص بالفئة الفرعية
         subcategoriesContainer.append(`
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-4 mt-5">
             <div class="card subcategory-card" data-service-id="${serviceId}" data-category-id="${categoryId}" data-subcategory-id="${subcategory.subcategoryId}">
+              <img src="${subcategory.imageUrl}" class="card-img-top" alt="${subcategory.title.en}" style="height: 36px; width: 40%; object-fit: cover;">
               <div class="card-body">
-                <h6 class="card-title">${subcategory.title.en}</h6>
-                <p class="card-text">${subcategory.description.en}</p>
+                <h6 class="card-title" style="font-size: 14px; font-weight: bold;">${subcategory.title.en}</h6>
+                <p class="card-text" style="font-size: 12px; color: #555;">${subcategory.description.en}</p>
+                <a href="subcategory.html?serviceId=${serviceId}&categoryId=${categoryId}&subcategoryId=${subcategory.subcategoryId}" class="btn btn-sm btn-primary">Read More</a>
               </div>
             </div>
           </div>
         `);
       });
+
+      subcategoriesContainer.append('</div>'); // إغلاق الحاوية بعد إضافة كل الكروت
 
       // إظهار الفئات الفرعية تحت الفئة المختارة
       subcategoriesContainer.slideDown();
@@ -183,6 +201,7 @@ window.loadSubcategories = function (serviceId, categoryId) {
     },
   });
 };
+
 
   function loadSubcategoryDescription(serviceId, categoryId, subcategoryId) {
     const lang = 'en'; // أو يمكنك تحديد اللغة من الـ query أو من مكان آخر
@@ -215,30 +234,6 @@ window.loadSubcategories = function (serviceId, categoryId) {
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /////////////////
-
 
 
 

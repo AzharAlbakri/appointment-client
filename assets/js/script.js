@@ -94,13 +94,14 @@ async function bookAppointment(formData) {
 
         const result = await response.json();
         if (response.ok) {
-            alert(`تم حجز الموعد بنجاح! رقم الموعد: ${result.appointmentId}`);
+            alert(`The appointment has been successfully booked! Appointment ID: ${result.appointmentId}`);
+
         } else {
-            alert(`خطأ: ${result.error}`);
+            alert(`Error: ${result.error}`);
         }
     } catch (error) {
         console.error('Error booking appointment:', error);
-        alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+        alert('An error occurred while connecting to the server.');
     }
 }
 
@@ -142,13 +143,15 @@ async function submitConsultationForm(formData) {
   
       const result = await response.json();
       if (response.ok) {
-        alert(`تم إرسال طلب الاستشارة بنجاح! معرف المستخدم: ${result.userId}`);
+        alert(`The consultation request has been successfully submitted! User ID: ${result.userId}`);
+
       } else {
-        alert(`خطأ: ${result.error}`);
+        alert(`Error: ${result.error}`);
       }
     } catch (error) {
-      console.error('خطأ أثناء إرسال طلب الاستشارة:', error);
-      alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+        console.error('Error while sending the consultation request:', error);
+        alert('An error occurred while connecting to the server.');
+        
     }
   }
   

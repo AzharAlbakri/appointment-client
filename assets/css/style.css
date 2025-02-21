@@ -328,4 +328,19 @@ footer.bg-dark.text-white.pt-5.pb-3 {
   background-color: rgb(4 104 121) !important
 }
 
+/* تنسيق للكروت داخل الصف */
+/* .subcategory-row {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  width: 100%;
+}
 
+.subcategory-card {
+  width: 30%; 
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+} */

@@ -9,10 +9,10 @@ function bookConsultation(data) {
     data: JSON.stringify(data),
     contentType: 'application/json',
     success: function (response) {
-      alert('تم حجز الموعد بنجاح!');
+      alert('The appointment has been successfully booked!');
     },
     error: function (error) {
-      console.error('خطأ في الحجز:', error);
+      console.error('Error in booking:', error);
     },
   });
 }

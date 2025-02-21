@@ -4,14 +4,13 @@ const BASE_URL = 'https://user-api-server.onrender.com';
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#loginForm').addEventListener('submit', function (event) {
         event.preventDefault(); // منع إرسال الفورم بشكل تقليدي
-        console.log("123321");
 
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
 
         // التحقق من أن الحقول ليست فارغة
         if (!email || !password) {
-            alert('يرجى ملء جميع الحقول');
+            alert('Please fill in all the fields');
             return;
         }
 
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // إرسال طلب تسجيل الدخول إلى السيرفر
     async function loginUser(credentials) {
-        console.log("123321");
         try {
             const response = await fetch(`${BASE_URL}/api/auth/login`, {
                 method: 'POST',
@@ -43,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 // إعادة توجيه المستخدم إلى الصفحة الرئيسية أو صفحة العيادة
                 window.location.href = '/index.html'; // تغيير المسار حسب الحاجة
             } else {
-                alert(`خطأ: ${result.message}`);
+                alert(`Error: ${result.message}`);
             }
         } catch (error) {
-            console.error('خطأ أثناء إرسال البيانات:', error);
-            alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+            console.error('Error while sending data:', error);
+            alert('An error occurred while connecting to the server.');
         }
     }
 });

@@ -6,11 +6,101 @@
     <title>Subcategory Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container mt-5">
-    <h2 id="serviceTitle"></h2>
+
+
+    <!-- Thin Top Header -->
+    <header class="top-header text-white py-2 bg-primary">
+      <div class="container d-flex justify-content-between align-items-center">
+          <!-- Left Section -->
+          <div>
+              <div class="d-flex align-items-center mb-1">
+                  <i class="bi bi-telephone me-2"></i>
+                  <span>+34 123456789</span>
+              </div>
+              <div class="d-flex align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>+34 123456789</span>
+              </div>
+          </div>
+
+          <!-- Right Section -->
+          <div class="text-end">
+              <h5 class="mb-1">Hospital Clinica</h5>
+              <p class="mb-2">We take care of your back, we improve your life</p>
+              <button class="btn btn-primary">
+                  <i class="bi bi-calendar-date me-2"></i>Book an appointment
+              </button>
+          </div>
+      </div>
+  </header>
+
+
+  <!-- Thin Header -->
+  <header class="thin-header another-header bg-light text-dark py-3"
+      style="position: sticky; top: 0; z-index: 1030; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+      <div class="container d-flex align-items-center justify-content-between">
+          <!-- Left Section: Logo and Clinic Name -->
+          <div class="d-flex align-items-center">
+              <img src="assets/images/logo.png" alt="Clinic Logo" height="50%" class="me-3">
+              <div>
+                  <a href="#" class="text-decoration-none fw-bold text-dark d-block">
+                      Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
+                  </a>
+                  <span>Spinal Surgeon</span>
+              </div>
+          </div>
+
+          <!-- Right Section: Additional Info -->
+          <div class="text-end">
+              <p class="mb-1 fw-bold">Consultant Spine Surgeon</p>
+              <p class="mb-1">Master degree in sport medicine</p>
+              <p class="mb-0">Associate professor</p>
+          </div>
+      </div>
+  </header>
+
+
+  <!-- Menu Bar -->
+  <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
+      style="position: sticky; top: 133px; z-index: 1020;">
+      <div class="container">
+          <div class="d-flex">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item"><a class="nav-link text-white" href="#">Team</a></li>
+                      <li class="nav-item"><a class="nav-link text-white" href="#">Pathologies</a></li>
+                      <li class="nav-item"><a class="nav-link text-white" href="#">Treatments</a></li>
+                      <li class="nav-item"><a class="nav-link text-white" href="#">Medical-Legal Expertise</a></li>
+                      <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="ms-auto" id="userNav">
+              <!-- Displayed if the user is logged in -->
+              <span id="userName" class="navbar-text me-3"></span>
+              <a href="https://appointment-client-la3l.vercel.app/user-dashboard" class="btn btn-outline-light me-2" id="dashboardLink"
+                  style="display: none;">Dashboard</a>
+              <button class="btn btn-outline-light me-2" id="logoutBtn" style="display: none;">Logout</button>
+
+              <!-- Displayed if the user is not logged in -->
+              <a href="login.html" class="btn btn-outline-light me-2" id="loginLink">Login</a>
+              <a href="signup.html" class="btn btn-light" id="signupLink">Sign Up</a>
+          </div>
+      </div>
+  </nav>
+
+
+<div class="container mt-5" id="contentContainer">
+    <!-- <h2 id="serviceTitle"></h2>
     <p id="serviceDescription"></p>
     
     <h3 id="categoryTitle"></h3>
@@ -20,8 +110,99 @@
     <p id="subcategoryDescription"></p>
 
     <hr>
-    <p id="subcategoryContent"></p>
+    <p id="subcategoryContent"></p> -->
 </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+      <div class="container">
+          <div class="row">
+              <!-- Contact Information -->
+              <div class="col-md-4 mb-4">
+                  <h5>Contact Us</h5>
+                  <ul class="list-unstyled">
+                      <li>Tel: 946 941 347</li>
+                      <li>Mobile: 696 13 25 38</li>
+                      <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
+                  </ul>
+                  <!-- Social Media Links -->
+                  <div class="social-icons mt-3">
+                      <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                      <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                      <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                  </div>
+              </div>
+
+              <!-- Navigation Links -->
+              <div class="col-md-4 mb-4">
+                  <h5>Links</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="#" class="text-white">Team</a></li>
+                      <li><a href="#" class="text-white">Conditions</a></li>
+                      <li><a href="#" class="text-white">Treatments</a></li>
+                      <li><a href="#" class="text-white">Medical-Legal Expertise</a></li>
+                      <li><a href="#" class="text-white">Contact</a></li>
+                  </ul>
+              </div>
+
+              <!-- Logo and Legal Links -->
+              <div class="col-md-4 mb-4 text-center">
+                  <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
+                  <p>All rights reserved</p>
+                  <ul class="list-inline">
+                      <li class="list-inline-item"><a href="#" class="text-white">Legal Notice</a></li>
+                      <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                      <li class="list-inline-item"><a href="#" class="text-white">Cookie Policy</a></li>
+                  </ul>
+              </div>
+          </div>
+
+          <!-- Map and Newsletter -->
+          <div class="row mt-4">
+              <!-- Map -->
+              <div class="col-md-6 mb-4">
+                  <h5>Location</h5>
+                  <div id="map" style="height: 200px; background-color: #f8f9fa;">
+                      <!-- You can replace the link with your custom Google Maps link -->
+                      <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
+                          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div>
+              </div>
+
+              <!-- Newsletter -->
+              <div class="col-md-6 mb-4">
+                  <h5>Subscribe to our Newsletter</h5>
+                  <form>
+                      <div class="mb-3">
+                          <input type="email" class="form-control" placeholder="Enter your email" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary secondery">Subscribe</button>
+                  </form>
+              </div>
+          </div>
+
+          <!-- Reviews -->
+          <div class="row mt-4 text-center">
+              <div class="col">
+                  <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
+                      <i class="bi bi-star-fill text-warning me-2"></i>See our reviews on Google
+                  </a>
+              </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="row mt-4">
+              <div class="col text-center">
+                  <p class="mb-0">&copy; 2025 Biziondo. All rights reserved.</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+
+
+
  <!-- App Scripts -->
  <script src="assets/js/app.js"></script>
  <script src="assets/js/api.js"></script>
@@ -54,9 +235,14 @@
         // $('#categoryTitle').text(data.category.title[lang] || data.category.title['en']);
         // $('#categoryDescription').text(data.category.description[lang] || data.category.description['en']);
 
-        $('#subcategoryTitle').text(data.title[lang] || data.title['en']);
-        $('#subcategoryDescription').text(data.description[lang] || data.description['en']);
-        $('#subcategoryContent').text(data.content[lang] || data.content['en']);
+        // $('#subcategoryTitle').text(data.title[lang] || data.title['en']);
+        // $('#subcategoryDescription').text(data.description[lang] || data.description['en']);
+        // $('#subcategoryContent').text(data.content[lang] || data.content['en']);
+        let htmlContent = data.content[lang];
+        document.getElementById("contentContainer").innerHTML = htmlContent;
+
+
+
       },
       error: function (err) {
         console.error("Error fetching subcategory details:", err);

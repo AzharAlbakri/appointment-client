@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // التحقق من وجود البيانات قبل الإرسال
         if (!formData.fullName || !formData.email || !formData.password) {
-            alert('يرجى ملء جميع الحقول');
+            alert('Please fill in all the fields');
+
             return;
         }
 
@@ -23,40 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         registerUser(formData);
     });
 
-    // إرسال طلب التسجيل إلى السيرفر
-    // async function registerUser(formData) {
-    //     try {
-    //         const response = await fetch(`${BASE_URL}/api/auth/signup`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(formData),
-    //         });
-
-    //         const result = await response.json();
-
-    //         // تحقق من حالة الاستجابة
-    //         if (response.ok) {
-    //             if (result.user) {
-    //                 // تخزين البيانات في localStorage بعد التسجيل بنجاح
-    //                 localStorage.setItem('token', result.token);
-    //                 localStorage.setItem('userName', result.user.fullName);
-    //                 localStorage.setItem('userEmail', result.user.email);
-
-    //                 // إعادة توجيه المستخدم إلى الصفحة الرئيسية
-    //                 window.location.href = '/index.html';  // أو حسب المسار المطلوب
-    //             } else {
-    //                 alert('لم يتم العثور على بيانات المستخدم في الاستجابة');
-    //             }
-    //         } else {
-    //             alert(`خطأ: ${result.message}`);
-    //         }
-    //     } catch (error) {
-    //         console.error('خطأ أثناء إرسال البيانات:', error);
-    //         alert('حدث خطأ أثناء الاتصال بالسيرفر.');
-    //     }
-    // }
 
     // إرسال طلب التسجيل إلى السيرفر
     async function registerUser(formData) {
@@ -72,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = await response.json();
             if (response.ok) {
-                alert(`تم إنشاء الحساب بنجاح!`);
+                alert(`Account created successfully!`);
 
                 // تخزين التوكن وبيانات المستخدم في الـ localStorage
                 localStorage.setItem('token', result.token);
@@ -82,11 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 // إعادة توجيه المستخدم إلى الصفحة الرئيسية أو صفحة العيادة
                 window.location.href = '/index.html'; // تغيير المسار حسب الحاجة
             } else {
-                alert(`خطأ: ${result.message}`);
+                alert(`Error: ${result.message}`);
             }
         } catch (error) {
-            console.error('خطأ أثناء إرسال البيانات:', error);
-            alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+            console.error('Error while sending data:', error);
+            alert('An error occurred while connecting to the server.');
+            
         }
     }
 
