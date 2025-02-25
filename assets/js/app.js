@@ -1,3 +1,8 @@
+// const BASE_URL = "http://localhost:3000";
+
+const API_BASE_URL = 'https://user-api-server.onrender.com';
+
+
 
 $(document).ready(function () {
   // عند الضغط على زر الحجز
@@ -21,7 +26,6 @@ $(document).ready(function () {
   // });
 
 
-  const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 
   $('#google-login').click(function () {

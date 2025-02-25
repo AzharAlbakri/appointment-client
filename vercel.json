@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      {
+        "source": "/user-dashboard",
+        "destination": "/user-dashboard.html"
+      }
+    ]
+  }
