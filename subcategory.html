@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,99 +9,150 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Custom CSS -->
     <link href="/assets/css/style.css" rel="stylesheet">
+
+
+
+
+
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.6.0/css/flag-icon.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- i18next Core -->
+    <script src="https://unpkg.com/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+
+    <!-- i18next Backend Loader -->
+    <script src="https://unpkg.com/i18next-http-backend@1.4.0/i18nextHttpBackend.min.js"></script>
+
+    <!-- i18next Language Detector -->
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
+
 </head>
+
 <body>
 
-
+    <!-- Language Dropdown -->
+    <div class="container d-flex justify-content-end py-2">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="languageSwitcher" data-bs-toggle="dropdown">
+                <i class="bi bi-flag-fill me-2"></i> <span id="selectedLang" data-i18n="currentLang">Español</span>
+            </button>
+            <ul class="dropdown-menu" style="z-index: 10000;">
+                <li><a class="dropdown-item change-lang" href="#" data-lang="es"><i class="bi bi-flag-fill me-2"></i>
+                        Español</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="en"><i class="bi bi-flag-fill me-2"></i>
+                        English</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="ar"><i class="bi bi-flag-fill me-2"></i>
+                        العربية</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="it"><i class="bi bi-flag-fill me-2"></i>
+                        Italian</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="fr"><i class="bi bi-flag-fill me-2"></i>
+                        Frensh</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Thin Top Header -->
     <header class="top-header text-white py-2 bg-primary">
-      <div class="container d-flex justify-content-between align-items-center">
-          <!-- Left Section -->
-          <div>
-              <div class="d-flex align-items-center mb-1">
-                  <i class="bi bi-telephone me-2"></i>
-                  <span>+34 123456789</span>
-              </div>
-              <div class="d-flex align-items-center">
-                  <i class="bi bi-whatsapp me-2"></i>
-                  <span>+34 123456789</span>
-              </div>
-          </div>
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left Section -->
+            <div>
+                <div class="d-flex align-items-center mb-1">
+                    <i class="bi bi-telephone me-2"></i>
+                    <span>+34 123456789</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    <span>+34 123456789</span>
+                </div>
+            </div>
 
-          <!-- Right Section -->
-          <div class="text-end">
-              <h5 class="mb-1">Hospital Clinica</h5>
-              <p class="mb-2">We take care of your back, we improve your life</p>
-              <button class="btn btn-primary">
-                  <i class="bi bi-calendar-date me-2"></i>Book an appointment
-              </button>
-          </div>
-      </div>
-  </header>
+            <!-- Right Section -->
+            <div class="text-end">
+                <h5 class="mb-1" data-i18n="hospital_name">Hospital Clinica</h5>
+                <p class="mb-2" data-i18n="tagline">We take care of your back, we improve your life</p>
+                <button class="btn btn-primary" data-i18n="book_appointment">
+                    <i class="bi bi-calendar-date me-2"></i>Book an appointment</button>
+            </div>
+        </div>
+    </header>
 
+    <!-- Thin Header -->
+    <header class="thin-header another-header bg-light text-dark py-3"
+        style="position: sticky; top: 0; z-index: 1030; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="container d-flex align-items-center justify-content-between">
+            <!-- Left Section: Logo and Clinic Name -->
+            <div class="d-flex align-items-center">
+                <img src="assets/images/logo.png" alt="Clinic Logo" height="50%" class="me-3">
+                <div>
+                    <a href="#" class="text-decoration-none fw-bold text-dark d-block" data-i18n="dr_name">
+                        Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
+                    </a>
+                    <span data-i18n="profession_title">Spinal Surgeon</span>
+                </div>
+            </div>
 
-  <!-- Thin Header -->
-  <header class="thin-header another-header bg-light text-dark py-3"
-      style="position: sticky; top: 0; z-index: 1030; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
-      <div class="container d-flex align-items-center justify-content-between">
-          <!-- Left Section: Logo and Clinic Name -->
-          <div class="d-flex align-items-center">
-              <img src="assets/images/logo.png" alt="Clinic Logo" height="50%" class="me-3">
-              <div>
-                  <a href="#" class="text-decoration-none fw-bold text-dark d-block">
-                      Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
-                  </a>
-                  <span>Spinal Surgeon</span>
-              </div>
-          </div>
+            <!-- Right Section: Additional Info -->
+            <div class="text-end">
+                <p class="mb-1 fw-bold" data-i18n="consultant_title">Consultant Spine Surgeon</p>
+                <p class="mb-1" data-i18n="degree">Master degree in sport medicine</p>
+                <p class="mb-0" data-i18n="role">Associate professor</p>
+            </div>
+        </div>
+    </header>
 
-          <!-- Right Section: Additional Info -->
-          <div class="text-end">
-              <p class="mb-1 fw-bold">Consultant Spine Surgeon</p>
-              <p class="mb-1">Master degree in sport medicine</p>
-              <p class="mb-0">Associate professor</p>
-          </div>
-      </div>
-  </header>
+    <!-- Menu Bar -->
+    <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
+        style="position: sticky; top: 133px; z-index: 1020;">
+        <div class="container">
+            <div class="d-flex">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="#" data-i18n="team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="pathologies">Pathologies</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="treatments">Treatments</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="medical_legal_expertise">Medical-Legal Expertise</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#" data-i18n="contact">Contact</a>
+                        </li>
 
+                    </ul>
+                </div>
+            </div>
+            <div class="ms-auto" id="userNav">
+                <!-- Displayed if the user is logged in -->
+                <span id="userName" class="navbar-text me-3"></span>
+                <a href="user-dashboard" class="btn btn-outline-light me-2" id="dashboardLink" style="display: none;"
+                    data-i18n="dashboard">Dashboard</a>
+                <button class="btn btn-outline-light me-2" id="logoutBtn" style="display: none;"
+                    data-i18n="logout">Logout</button>
 
-  <!-- Menu Bar -->
-  <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
-      style="position: sticky; top: 133px; z-index: 1020;">
-      <div class="container">
-          <div class="d-flex">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                      <li class="nav-item"><a class="nav-link text-white" href="#">Team</a></li>
-                      <li class="nav-item"><a class="nav-link text-white" href="#">Pathologies</a></li>
-                      <li class="nav-item"><a class="nav-link text-white" href="#">Treatments</a></li>
-                      <li class="nav-item"><a class="nav-link text-white" href="#">Medical-Legal Expertise</a></li>
-                      <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
-                  </ul>
-              </div>
-          </div>
-          <div class="ms-auto" id="userNav">
-              <!-- Displayed if the user is logged in -->
-              <span id="userName" class="navbar-text me-3"></span>
-              <a href="https://appointment-client-la3l.vercel.app/user-dashboard" class="btn btn-outline-light me-2" id="dashboardLink"
-                  style="display: none;">Dashboard</a>
-              <button class="btn btn-outline-light me-2" id="logoutBtn" style="display: none;">Logout</button>
+                <!-- Displayed if the user is not logged in -->
+                <a href="login.html" class="btn btn-outline-light me-2" id="loginLink" data-i18n="login">Login</a>
+                <a href="signup.html" class="btn btn-light" id="signupLink" data-i18n="signup">Sign Up</a>
+            </div>
 
-              <!-- Displayed if the user is not logged in -->
-              <a href="login.html" class="btn btn-outline-light me-2" id="loginLink">Login</a>
-              <a href="signup.html" class="btn btn-light" id="signupLink">Sign Up</a>
-          </div>
-      </div>
-  </nav>
+        </div>
+    </nav>
 
-
-<div class="container mt-5" id="contentContainer">
-    <!-- <h2 id="serviceTitle"></h2>
+    <div class="container mt-5" id="contentContainer">
+        <!-- <h2 id="serviceTitle"></h2>
     <p id="serviceDescription"></p>
     
     <h3 id="categoryTitle"></h3>
@@ -111,145 +163,159 @@
 
     <hr>
     <p id="subcategoryContent"></p> -->
-</div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-white pt-5 pb-3">
-      <div class="container">
-          <div class="row">
-              <!-- Contact Information -->
-              <div class="col-md-4 mb-4">
-                  <h5>Contact Us</h5>
-                  <ul class="list-unstyled">
-                      <li>Tel: 946 941 347</li>
-                      <li>Mobile: 696 13 25 38</li>
-                      <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
-                  </ul>
-                  <!-- Social Media Links -->
-                  <div class="social-icons mt-3">
-                      <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                      <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                      <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-                  </div>
-              </div>
+        <div class="container">
+            <div class="row">
+                <!-- Contact Information -->
+                <div class="col-md-4 mb-4">
+                    <h5 data-i18n="contact_us">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li>Tel: 946 941 347</li>
+                        <li>Mobile: 696 13 25 38</li>
+                        <li>Email: <a href="mailto:info@biziondo.com" class="text-white">info@biziondo.com</a></li>
+                    </ul>
+                    <!-- Social Media Links -->
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
 
-              <!-- Navigation Links -->
-              <div class="col-md-4 mb-4">
-                  <h5>Links</h5>
-                  <ul class="list-unstyled">
-                      <li><a href="#" class="text-white">Team</a></li>
-                      <li><a href="#" class="text-white">Conditions</a></li>
-                      <li><a href="#" class="text-white">Treatments</a></li>
-                      <li><a href="#" class="text-white">Medical-Legal Expertise</a></li>
-                      <li><a href="#" class="text-white">Contact</a></li>
-                  </ul>
-              </div>
+                <!-- Navigation Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 data-i18n="links">Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white" data-i18n="team">Team</a></li>
+                        <li><a href="#" class="text-white" data-i18n="conditions">Conditions</a></li>
+                        <li><a href="#" class="text-white" data-i18n="treatments">Treatments</a></li>
+                        <li><a href="#" class="text-white" data-i18n="medical_legal_expertise">Medical-Legal
+                                Expertise</a></li>
+                        <li><a href="#" class="text-white" data-i18n="contact">Contact</a></li>
+                    </ul>
+                </div>
 
-              <!-- Logo and Legal Links -->
-              <div class="col-md-4 mb-4 text-center">
-                  <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
-                  <p>All rights reserved</p>
-                  <ul class="list-inline">
-                      <li class="list-inline-item"><a href="#" class="text-white">Legal Notice</a></li>
-                      <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
-                      <li class="list-inline-item"><a href="#" class="text-white">Cookie Policy</a></li>
-                  </ul>
-              </div>
-          </div>
+                <!-- Logo and Legal Links -->
+                <div class="col-md-4 mb-4 text-center">
+                    <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
+                    <p data-i18n="all_rights_reserved">All rights reserved</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="legal_notice">Legal
+                                Notice</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="privacy_policy">Privacy
+                                Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="cookie_policy">Cookie
+                                Policy</a></li>
 
-          <!-- Map and Newsletter -->
-          <div class="row mt-4">
-              <!-- Map -->
-              <div class="col-md-6 mb-4">
-                  <h5>Location</h5>
-                  <div id="map" style="height: 200px; background-color: #f8f9fa;">
-                      <!-- You can replace the link with your custom Google Maps link -->
-                      <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
-                          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-              </div>
+                    </ul>
+                </div>
+            </div>
 
-              <!-- Newsletter -->
-              <div class="col-md-6 mb-4">
-                  <h5>Subscribe to our Newsletter</h5>
-                  <form>
-                      <div class="mb-3">
-                          <input type="email" class="form-control" placeholder="Enter your email" required>
-                      </div>
-                      <button type="submit" class="btn btn-primary secondery">Subscribe</button>
-                  </form>
-              </div>
-          </div>
+            <!-- Map and Newsletter -->
+            <div class="row mt-4">
+                <!-- Map -->
+                <div class="col-md-6 mb-4">
+                    <h5 data-i18n="location">Location</h5>
+                    <div id="map" style="height: 200px; background-color: #f8f9fa;">
+                        <!-- You can replace the link with your custom Google Maps link -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093644!2d-122.42067968468113!3d37.77851917975701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5efb6f7d%3A0x5d76e8ce0b7c21ff!2sGoogle%20San%20Francisco!5e0!3m2!1sen!2s!4v1612297106546!5m2!1sen!2s"
+                            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
 
-          <!-- Reviews -->
-          <div class="row mt-4 text-center">
-              <div class="col">
-                  <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
-                      <i class="bi bi-star-fill text-warning me-2"></i>See our reviews on Google
-                  </a>
-              </div>
-          </div>
+                <!-- Newsletter -->
+                <div class="col-md-6 mb-4">
+                    <h5 data-i18n="subscribe_newsletter">Subscribe to our Newsletter</h5>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary secondery"
+                            data-i18n="subscribe_button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
 
-          <!-- Copyright -->
-          <div class="row mt-4">
-              <div class="col text-center">
-                  <p class="mb-0">&copy; 2025 Biziondo. All rights reserved.</p>
-              </div>
-          </div>
-      </div>
-  </footer>
+            <!-- Reviews -->
+            <div class="row mt-4 text-center">
+                <div class="col">
+                    <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
+                        <i class="bi bi-star-fill text-warning me-2"></i><span data-i18n="google_reviews">See our
+                            reviews on Google</span>
+                    </a>
+                </div>
+            </div>
 
-
-
-
- <!-- App Scripts -->
- <script src="assets/js/app.js"></script>
- <script src="assets/js/api.js"></script>
-<script>
-
-  $(document).ready(function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const serviceId = urlParams.get('serviceId');
-    const categoryId = urlParams.get('categoryId');
-    const subcategoryId = urlParams.get('subcategoryId');
-
-    if (serviceId && categoryId && subcategoryId) {
-      loadSubcategoryDetails(serviceId, categoryId, subcategoryId);
-    } else {
-      console.error("Missing parameters in URL");
-    }
-  });
-
-  function loadSubcategoryDetails(serviceId, categoryId, subcategoryId) {
-    const lang = 'en';
-
-    $.ajax({
-      url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategory/${subcategoryId}`,
-      method: 'GET',
-      success: function (data) {
-        console.log("data", data);
-        // $('#serviceTitle').text(data.title[lang] || data.title['en']);
-        // $('#serviceDescription').text(data.description[lang] || data.description['en']);
-
-        // $('#categoryTitle').text(data.category.title[lang] || data.category.title['en']);
-        // $('#categoryDescription').text(data.category.description[lang] || data.category.description['en']);
-
-        // $('#subcategoryTitle').text(data.title[lang] || data.title['en']);
-        // $('#subcategoryDescription').text(data.description[lang] || data.description['en']);
-        // $('#subcategoryContent').text(data.content[lang] || data.content['en']);
-        let htmlContent = data.content[lang];
-        document.getElementById("contentContainer").innerHTML = htmlContent;
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <p class="mb-0" data-i18n="copyright">&copy; 2025 Biziondo. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
-      },
-      error: function (err) {
-        console.error("Error fetching subcategory details:", err);
-      }
-    });
-  }
-</script>
+
+    <!-- App Scripts -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('serviceId');
+            const categoryId = urlParams.get('categoryId');
+            const subcategoryId = urlParams.get('subcategoryId');
+
+            if (serviceId && categoryId && subcategoryId) {
+                loadSubcategoryDetails(serviceId, categoryId, subcategoryId);
+            } else {
+                console.error("Missing parameters in URL");
+            }
+        });
+
+        function loadSubcategoryDetails(serviceId, categoryId, subcategoryId) {
+            const lang = 'en';
+
+            $.ajax({
+                url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategory/${subcategoryId}`,
+                method: 'GET',
+                success: function (data) {
+                    console.log("data", data);
+                    // $('#serviceTitle').text(data.title[lang] || data.title['en']);
+                    // $('#serviceDescription').text(data.description[lang] || data.description['en']);
+
+                    // $('#categoryTitle').text(data.category.title[lang] || data.category.title['en']);
+                    // $('#categoryDescription').text(data.category.description[lang] || data.category.description['en']);
+
+                    // $('#subcategoryTitle').text(data.title[lang] || data.title['en']);
+                    // $('#subcategoryDescription').text(data.description[lang] || data.description['en']);
+                    // $('#subcategoryContent').text(data.content[lang] || data.content['en']);
+                    let htmlContent = data.content[lang];
+                    document.getElementById("contentContainer").innerHTML = htmlContent;
+
+
+
+                },
+                error: function (err) {
+                    console.error("Error fetching subcategory details:", err);
+                }
+            });
+        }
+    </script>
+
+
+
+
 
 </body>
+
 </html>

@@ -4,16 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
     <title>Clinic Website</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.6.0/css/flag-icon.min.css">
+
     <!-- Custom CSS -->
     <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- i18next Core -->
+    <script src="https://unpkg.com/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+
+    <!-- i18next Backend Loader -->
+    <script src="https://unpkg.com/i18next-http-backend@1.4.0/i18nextHttpBackend.min.js"></script>
+
+    <!-- i18next Language Detector -->
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
+
 </head>
 
 <body>
+    <!-- Language Dropdown -->
+    <div class="container d-flex justify-content-end py-2">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="languageSwitcher" data-bs-toggle="dropdown">
+                <i class="bi bi-flag-fill me-2"></i> <span id="selectedLang" data-i18n="currentLang">Español</span>
+            </button>
+            <ul class="dropdown-menu" style="z-index: 10000;">
+                <li><a class="dropdown-item change-lang" href="#" data-lang="es"><i class="bi bi-flag-fill me-2"></i>
+                        Español</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="en"><i class="bi bi-flag-fill me-2"></i>
+                        English</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="ar"><i class="bi bi-flag-fill me-2"></i>
+                        العربية</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="it"><i class="bi bi-flag-fill me-2"></i>
+                        Italian</a></li>
+                <li><a class="dropdown-item change-lang" href="#" data-lang="fr"><i class="bi bi-flag-fill me-2"></i>
+                        Frensh</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Thin Top Header -->
     <header class="top-header text-white py-2 bg-primary">
@@ -32,15 +69,15 @@
 
             <!-- Right Section -->
             <div class="text-end">
-                <h5 class="mb-1">Hospital Clinica</h5>
-                <p class="mb-2">We take care of your back, we improve your life</p>
-                <button class="btn btn-primary">
-                    <i class="bi bi-calendar-date me-2"></i>Book an appointment
-                </button>
+                <h5 class="mb-1" data-i18n="hospital_name">Hospital Clinica</h5>
+                <p class="mb-2" data-i18n="tagline">We take care of your back, we improve your life</p>
+                <button class="btn btn-primary" data-i18n="book_appointment">
+                    <i class="bi bi-calendar-date me-2"></i>Book an appointment</button>
             </div>
+
+
         </div>
     </header>
-
 
     <!-- Thin Header -->
     <header class="thin-header another-header bg-light text-dark py-3"
@@ -50,22 +87,21 @@
             <div class="d-flex align-items-center">
                 <img src="assets/images/logo.png" alt="Clinic Logo" height="50%" class="me-3">
                 <div>
-                    <a href="#" class="text-decoration-none fw-bold text-dark d-block">
+                    <a href="#" class="text-decoration-none fw-bold text-dark d-block" data-i18n="dr_name">
                         Dr Aaron Hilis MB ChB BSc, MA, FRCS, PhD
                     </a>
-                    <span>Spinal Surgeon</span>
+                    <span data-i18n="profession_title">Spinal Surgeon</span>
                 </div>
             </div>
 
             <!-- Right Section: Additional Info -->
             <div class="text-end">
-                <p class="mb-1 fw-bold">Consultant Spine Surgeon</p>
-                <p class="mb-1">Master degree in sport medicine</p>
-                <p class="mb-0">Associate professor</p>
+                <p class="mb-1 fw-bold" data-i18n="consultant_title">Consultant Spine Surgeon</p>
+                <p class="mb-1" data-i18n="degree">Master degree in sport medicine</p>
+                <p class="mb-0" data-i18n="role">Associate professor</p>
             </div>
         </div>
     </header>
-
 
     <!-- Menu Bar -->
     <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
@@ -78,25 +114,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Team</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Pathologies</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Treatments</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Medical-Legal Expertise</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#" data-i18n="team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="pathologies">Pathologies</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="treatments">Treatments</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"
+                                data-i18n="medical_legal_expertise">Medical-Legal Expertise</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#" data-i18n="contact">Contact</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
             <div class="ms-auto" id="userNav">
                 <!-- Displayed if the user is logged in -->
                 <span id="userName" class="navbar-text me-3"></span>
-                <a href="user-dashboard" class="btn btn-outline-light me-2" id="dashboardLink"
-                    style="display: none;">Dashboard</a>
-                <button class="btn btn-outline-light me-2" id="logoutBtn" style="display: none;">Logout</button>
+                <a href="user-dashboard" class="btn btn-outline-light me-2" id="dashboardLink" style="display: none;"
+                    data-i18n="dashboard">Dashboard</a>
+                <button class="btn btn-outline-light me-2" id="logoutBtn" style="display: none;"
+                    data-i18n="logout">Logout</button>
 
                 <!-- Displayed if the user is not logged in -->
-                <a href="login.html" class="btn btn-outline-light me-2" id="loginLink">Login</a>
-                <a href="signup.html" class="btn btn-light" id="signupLink">Sign Up</a>
+                <a href="login.html" class="btn btn-outline-light me-2" id="loginLink" data-i18n="login">Login</a>
+                <a href="signup.html" class="btn btn-light" id="signupLink" data-i18n="signup">Sign Up</a>
             </div>
+
         </div>
     </nav>
 
@@ -105,10 +148,11 @@
         <!-- Consultation Form -->
         <div class="consultation-form">
             <form id="consultationForm">
-                <h4>Consultation Request</h4>
+                <h4 data-i18n="consultation_request">Consultation Request</h4>
+
                 <!-- Full Name -->
                 <div class="mb-3">
-                    <label for="fullName" class="form-label">Full Name</label>
+                    <label for="fullName" class="form-label" data-i18n="full_name_label">Full Name</label>
                     <input type="text" id="consultationfullName" name="fullName" class="form-control"
                         placeholder="Enter your name" required>
                 </div>
@@ -116,12 +160,12 @@
                 <!-- Email and Phone Number in the same row -->
                 <div class="mb-3 row">
                     <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label" data-i18n="email_label">Email</label>
                         <input type="email" id="consultationemail" name="email" class="form-control"
                             placeholder="example@example.com" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="phone" class="form-label">Phone Number</label>
+                        <label for="phone" class="form-label" data-i18n="phone_label">Phone Number</label>
                         <input type="text" id="consultationphone" name="phone" class="form-control"
                             placeholder="Enter your phone number" required>
                     </div>
@@ -130,33 +174,37 @@
                 <!-- Contact Method and Consultation Type in the same row -->
                 <div class="mb-3 row">
                     <div class="col-md-6">
-                        <label for="contactMethod" class="form-label">Contact Method</label>
+                        <label for="contactMethod" class="form-label" data-i18n="contact_method_label">Contact
+                            Method</label>
                         <select id="consultationcontactMethod" name="contactMethod" class="form-select" required>
-                            <option value="email">Email</option>
-                            <option value="phone">Phone</option>
-                            <option value="whatsapp">WhatsApp</option>
+                            <option value="email" data-i18n="email_option">Email</option>
+                            <option value="phone" data-i18n="phone_option">Phone</option>
+                            <option value="whatsapp" data-i18n="whatsapp_option">WhatsApp</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="consultationType" class="form-label">Consultation Type</label>
+                        <label for="consultationType" class="form-label"
+                            data-i18n="consultation_type_label">Consultation Type</label>
                         <select id="consultationconsultationType" name="consultationType" class="form-select" required>
-                            <option value="general">General Consultation</option>
-                            <option value="medical">Medical Consultation</option>
-                            <option value="legal">Legal Consultation</option>
+                            <option value="general" data-i18n="general_option">General Consultation</option>
+                            <option value="medical" data-i18n="medical_option">Medical Consultation</option>
+                            <option value="legal" data-i18n="legal_option">Legal Consultation</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Additional Information -->
                 <div class="mb-3">
-                    <label for="additionalInfo" class="form-label">Additional Information</label>
+                    <label for="additionalInfo" class="form-label" data-i18n="additional_info_label">Additional
+                        Information</label>
                     <textarea id="consultationadditionalInfo" name="additionalInfo" class="form-control" rows="3"
                         placeholder="Enter any additional information"></textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+                <button type="submit" class="btn btn-primary w-100" data-i18n="submit_request">Submit Request</button>
             </form>
+
         </div>
 
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -165,30 +213,32 @@
                 <div class="carousel-item active"
                     style="background-image: url('https://res.cloudinary.com/dheh8ee3r/image/upload/v1738760173/golf_kt4o3t.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1>Welcome to Our Clinic</h1>
-                        <p>We offer high-quality medical care in all specialties.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <h1 data-i18n="carousel_welcome">Welcome to Our Clinic</h1>
+                        <p data-i18n="carousel_description">We offer high-quality medical care in all specialties.</p>
+                        <a href="#" class="btn btn-primary" data-i18n="read_more">Read More</a>
                     </div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-item"
                     style="background-image: url('assets/images/tennis.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1>The Best Medical Care</h1>
-                        <p>Our team of doctors is ready to assist you.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <h1 data-i18n="carousel_best_medical_care">The Best Medical Care</h1>
+                        <p data-i18n="carousel_team_assistance">Our team of doctors is ready to assist you.</p>
+                        <a href="#" class="btn btn-primary" data-i18n="read_more">Read More</a>
                     </div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="carousel-item"
                     style="background-image: url('assets/images/yoga.jpg'); background-size: cover; background-position: center; height: 75vh;">
                     <div class="carousel-caption text-start text-white">
-                        <h1>Comprehensive Medical Services</h1>
-                        <p>High-quality healthcare in a comfortable and safe environment.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <h1 data-i18n="carousel_comprehensive_services">Comprehensive Medical Services</h1>
+                        <p data-i18n="carousel_high_quality_healthcare">High-quality healthcare in a comfortable and
+                            safe environment.</p>
+                        <a href="#" class="btn btn-primary" data-i18n="read_more">Read More</a>
                     </div>
                 </div>
             </div>
+
             <!-- Carousel Controls -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -204,56 +254,62 @@
     <!-- Form Section -->
     <section class="appointment-form-section py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Schedule Your Appointment Now</h2>
+            <h2 class="text-center mb-4" data-i18n="appointment_schedule">Schedule Your Appointment Now</h2>
             <!-- Form -->
             <form id="appointmentForm" class="bg-light p-4 rounded shadow">
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="patientName" class="form-label">Patient's Name</label>
+                        <label for="patientName" class="form-label" data-i18n="patient_name">Patient's Name</label>
                         <input type="text" id="patientName" name="patient_name" class="form-control"
                             placeholder="Enter patient's name" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <label for="phoneNumber" class="form-label" data-i18n="phone_number">Phone Number</label>
                         <input type="text" id="phoneNumber" name="phone_number" class="form-control"
                             placeholder="Enter phone number" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label" data-i18n="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control"
                             placeholder="example@example.com" required>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="identityNumber" class="form-label">Identity Number</label>
+                        <label for="identityNumber" class="form-label" data-i18n="identity_number">Identity
+                            Number</label>
                         <input type="text" id="identityNumber" name="identity_number" class="form-control"
                             placeholder="Enter identity number" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="appointmentDate" class="form-label">Appointment Date</label>
+                        <label for="appointmentDate" class="form-label" data-i18n="appointment_date">Appointment
+                            Date</label>
                         <input type="date" id="appointmentDate" name="appointment_date" class="form-control" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="appointmentTime" class="form-label">Appointment Time</label>
+                        <label for="appointmentTime" class="form-label" data-i18n="appointment_time">Appointment
+                            Time</label>
                         <select id="appointmentTime" name="appointment_time" class="form-select" required disabled>
-                            <option value="">Select time</option>
+                            <option value="" data-i18n="select_time">Select time</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="appointmentReason" class="form-label">Reason for Appointment</label>
+                        <label for="appointmentReason" class="form-label" data-i18n="appointment_reason">Reason for
+                            Appointment</label>
                         <input type="text" id="appointmentReason" name="appointment_reason" class="form-control"
                             placeholder="Enter reason for appointment" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="preferredDoctor" class="form-label">Preferred Doctor</label>
+                        <label for="preferredDoctor" class="form-label" data-i18n="preferred_doctor">Preferred
+                            Doctor</label>
                         <input type="text" id="preferredDoctor" name="preferred_doctor" class="form-control"
                             placeholder="Preferred doctor's name">
                     </div>
                     <div class="col-md-4">
-                        <label for="additionalNotes" class="form-label">Additional Notes</label>
+                        <label for="additionalNotes" class="form-label" data-i18n="additional_notes">Additional
+                            Notes</label>
                         <textarea id="additionalNotes" name="additional_notes" class="form-control" rows="1"
                             placeholder="Enter your notes"></textarea>
                     </div>
@@ -262,16 +318,19 @@
                     <div class="col-md-4">
                         <div class="form-check">
                             <input type="checkbox" id="hasInsurance" name="has_insurance" class="form-check-input">
-                            <label for="hasInsurance" class="form-check-label">Do you have insurance?</label>
+                            <label for="hasInsurance" class="form-check-label" data-i18n="insurance_question">Do you
+                                have insurance?</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="insuranceCompany" class="form-label">Insurance Company</label>
+                        <label for="insuranceCompany" class="form-label" data-i18n="insurance_company">Insurance
+                            Company</label>
                         <input type="text" id="insuranceCompany" name="insurance_company" class="form-control"
                             placeholder="Insurance company name">
                     </div>
                     <div class="col-md-4">
-                        <label for="insurancePolicyNumber" class="form-label">Insurance Policy Number</label>
+                        <label for="insurancePolicyNumber" class="form-label"
+                            data-i18n="insurance_policy_number">Insurance Policy Number</label>
                         <input type="text" id="insurancePolicyNumber" name="insurance_policy_number"
                             class="form-control" placeholder="Policy number">
                     </div>
@@ -281,21 +340,24 @@
                         <div class="form-check">
                             <input type="checkbox" id="agreeToTerms" name="agree_to_terms" class="form-check-input"
                                 required>
-                            <label for="agreeToTerms" class="form-check-label">I agree to the terms and
-                                conditions</label>
+                            <label for="agreeToTerms" class="form-check-label" data-i18n="agree_terms">I agree to the
+                                terms and conditions</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="reminderMethod" class="form-label">Reminder Method</label>
+                        <label for="reminderMethod" class="form-label" data-i18n="reminder_method">Reminder
+                            Method</label>
                         <select id="reminderMethod" name="reminder_method" class="form-select" required>
-                            <option value="email">Email</option>
-                            <option value="sms">SMS</option>
+                            <option value="email" data-i18n="email_option">Email</option>
+                            <option value="sms" data-i18n="sms_option">SMS</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Book Appointment</button>
+                <button type="submit" class="btn btn-primary w-100" data-i18n="book_appointment">Book
+                    Appointment</button>
             </form>
         </div>
+
     </section>
 
     <!-- About -->
@@ -304,7 +366,7 @@
             <div class="row">
                 <!-- Text -->
                 <div class="col-md-6">
-                    <h2>About Our Clinic</h2>
+                    <h2 data-i18n="about_clinic">About Our Clinic</h2>
                     <p>
                         Dr. Aaron is a spine surgeon specializing in traumatology and orthopedic surgery, with extensive
                         experience, based in Extremadura. He has received training at prestigious centers of excellence
@@ -357,14 +419,13 @@
         </div>
     </section>
 
-
     <!-- Footer -->
     <footer class="bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <!-- Contact Information -->
                 <div class="col-md-4 mb-4">
-                    <h5>Contact Us</h5>
+                    <h5 data-i18n="contact_us">Contact Us</h5>
                     <ul class="list-unstyled">
                         <li>Tel: 946 941 347</li>
                         <li>Mobile: 696 13 25 38</li>
@@ -380,24 +441,29 @@
 
                 <!-- Navigation Links -->
                 <div class="col-md-4 mb-4">
-                    <h5>Links</h5>
+                    <h5 data-i18n="links">Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Team</a></li>
-                        <li><a href="#" class="text-white">Conditions</a></li>
-                        <li><a href="#" class="text-white">Treatments</a></li>
-                        <li><a href="#" class="text-white">Medical-Legal Expertise</a></li>
-                        <li><a href="#" class="text-white">Contact</a></li>
+                        <li><a href="#" class="text-white" data-i18n="team">Team</a></li>
+                        <li><a href="#" class="text-white" data-i18n="conditions">Conditions</a></li>
+                        <li><a href="#" class="text-white" data-i18n="treatments">Treatments</a></li>
+                        <li><a href="#" class="text-white" data-i18n="medical_legal_expertise">Medical-Legal
+                                Expertise</a></li>
+                        <li><a href="#" class="text-white" data-i18n="contact">Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Logo and Legal Links -->
                 <div class="col-md-4 mb-4 text-center">
                     <img src="assets/images/cicco.png" alt="CICCO Logo" class="mb-3" style="max-height: 33%;">
-                    <p>All rights reserved</p>
+                    <p data-i18n="all_rights_reserved">All rights reserved</p>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#" class="text-white">Legal Notice</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white">Cookie Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="legal_notice">Legal
+                                Notice</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="privacy_policy">Privacy
+                                Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white" data-i18n="cookie_policy">Cookie
+                                Policy</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -406,7 +472,7 @@
             <div class="row mt-4">
                 <!-- Map -->
                 <div class="col-md-6 mb-4">
-                    <h5>Location</h5>
+                    <h5 data-i18n="location">Location</h5>
                     <div id="map" style="height: 200px; background-color: #f8f9fa;">
                         <!-- You can replace the link with your custom Google Maps link -->
                         <iframe
@@ -417,12 +483,12 @@
 
                 <!-- Newsletter -->
                 <div class="col-md-6 mb-4">
-                    <h5>Subscribe to our Newsletter</h5>
+                    <h5 data-i18n="subscribe_newsletter">Subscribe to our Newsletter</h5>
                     <form>
                         <div class="mb-3">
                             <input type="email" class="form-control" placeholder="Enter your email" required>
                         </div>
-                        <button type="submit" class="btn btn-primary secondery">Subscribe</button>
+                        <button type="submit" class="btn btn-primary secondery" data-i18n="subscribe_button">Subscribe</button>
                     </form>
                 </div>
             </div>
@@ -431,7 +497,7 @@
             <div class="row mt-4 text-center">
                 <div class="col">
                     <a href="https://www.google.com/maps/place/..." class="btn btn-light" target="_blank">
-                        <i class="bi bi-star-fill text-warning me-2"></i>See our reviews on Google
+                        <i class="bi bi-star-fill text-warning me-2"></i><span data-i18n="google_reviews">See our reviews on Google</span>
                     </a>
                 </div>
             </div>
@@ -439,16 +505,13 @@
             <!-- Copyright -->
             <div class="row mt-4">
                 <div class="col text-center">
-                    <p class="mb-0">&copy; 2025 Biziondo. All rights reserved.</p>
+                    <p class="mb-0" data-i18n="copyright">&copy; 2025 Biziondo. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-
-
     <!-- Files -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/api.js"></script>

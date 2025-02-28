@@ -1,14 +1,74 @@
-// const BASE_URL = "http://localhost:3000";
+//const BASE_URL = "http://localhost:3000";
 
-const API_BASE_URL = 'https://user-api-server.onrender.com';
+//const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 
 
 $(document).ready(function () {
-  // عند الضغط على زر الحجز
-  $('#reservationButton').on('click', function () {
-    alert('Booking button clicked!');
+  // تهيئة i18next
+  i18next
+    .use(i18nextHttpBackend) // تحميل الترجمات من ملفات JSON
+    .use(i18nextBrowserLanguageDetector) // اكتشاف لغة المتصفح
+    .init({
+      lng: localStorage.getItem("selectedLang") || "es", // استخدام اللغة المحفوظة أو الافتراضية
+      fallbackLng: "en", // اللغة الاحتياطية
+      debug: true,
+      backend: {
+        loadPath: `${API_BASE_URL}/locales/{{lng}}.json`, // مسار ملفات الترجمة
+        // url: `${API_BASE_URL}/services`,
+
+      }
+    }, function (err, t) {
+      if (err) return console.error("i18next error:", err);
+      updateContent();
+      updateLanguageButton(i18next.language);
+    });
+
+  // تحديث محتوى الصفحة بناءً على اللغة المحددة
+  window.updateContent = function () {
+    $("[data-i18n]").each(function () {
+      let key = $(this).attr("data-i18n");
+      $(this).text(i18next.t(key));
+    });
+  }
+
+  // تحديث زر القائمة المنسدلة ليعكس اللغة المختارة
+  window.updateLanguageButton = function (selectedLang) {
+    let langText = { "es": "Español", "en": "English", "ar": "العربية" };
+    $("#selectedLang").text(langText[selectedLang] || "Español");
+  }
+
+  // تغيير اللغة عند الاختيار
+  window.changeLanguage = function (selectedLang) {
+    console.log("Switching language to:", selectedLang);
+    i18next.changeLanguage(selectedLang, function (err) {
+      if (err) return console.error("Error changing language:", err);
+      updateContent();
+      updateLanguageButton(selectedLang);
+      localStorage.setItem("selectedLang", selectedLang); // حفظ اللغة في localStorage
+    });
+  }
+
+  // التعامل مع تغيير اللغة عند النقر على أي عنصر في القائمة
+  $(".change-lang").on("click", function (e) {
+    e.preventDefault();
+    let selectedLang = $(this).data("lang");
+    i18next.changeLanguage(selectedLang, function () {
+        updateContent();
+        updateLanguageButton(selectedLang);
+        localStorage.setItem("selectedLang", selectedLang);
+    });
   });
+
+  // عند الضغط على زر الحجز
+  $("#reservationButton").on("click", function () {
+    alert(i18next.t("booking_message"));
+  });
+
+
+  //document.getElementById("consultationfullName").placeholder = i18next.t('enter_name');
+
+
 
 
   // $('#google-login').click(function () {
@@ -54,7 +114,9 @@ $(document).ready(function () {
     method: 'GET',
     success: function (data) {
       if (data.length > 0) {
-        const lang = 'en';  // حدد اللغة التي تريد استخدامها، مثل 'ar' أو 'en'
+        //const lang = 'en';  // حدد اللغة التي تريد استخدامها، مثل 'ar' أو 'en'
+        const lang = localStorage.getItem("selectedLang") || "en"; // الحصول على اللغة المختارة
+
         data.forEach(service => {
           console.log("service", service);
 
@@ -76,20 +138,10 @@ $(document).ready(function () {
         });
 
         // إضافة حدث النقر للانتقال إلى صفحة الفئات
-        // $('.card').click(function () {
-        //   const serviceId = $(this).data('service-id');
-        //   loadCategories(serviceId); // استدعاء دالة لتحميل الفئات
-        // });
-
         $('.card').click(function () {
           const serviceId = $(this).data('service-id');
           window.location.href = `categories.html?serviceId=${serviceId}`; // توجيه المستخدم إلى صفحة الفئات
         });
-
-
-
-        
-
       }
     },
     error: function (err) {
@@ -97,22 +149,22 @@ $(document).ready(function () {
     }
   });
 
- // جعل الدالة متاحة عالميًا
- window.loadCategories = function (serviceId) {
-  const lang = 'en'; 
+  // جعل الدالة متاحة عالميًا
+  window.loadCategories = function (serviceId) {
+    const lang = 'en';
 
-  $.ajax({
+    $.ajax({
       url: `${API_BASE_URL}/service/${serviceId}/categories`,
       method: 'GET',
       success: function (categories) {
-          $('#categoriesSection').empty(); 
+        $('#categoriesSection').empty();
 
-          categories.forEach(category => {
-              const title = category.title[lang] || category.title['en'];
-              const description = category.description[lang] || category.description['en'];
-              const categoryId = category.categoryId;
+        categories.forEach(category => {
+          const title = category.title[lang] || category.title['en'];
+          const description = category.description[lang] || category.description['en'];
+          const categoryId = category.categoryId;
 
-              $('#categoriesSection').append(`
+          $('#categoriesSection').append(`
                   <div class="col-md-4 mb-4">
                       <div class="card category-card" data-category-id="${categoryId}">
                           <img src="${category.imageUrl}" class="card-img-top" alt="${title}">
@@ -125,53 +177,53 @@ $(document).ready(function () {
                       <div class="row subcategories-container" id="subcategories-${categoryId}" style="display: none;"></div>
                   </div>
               `);
-          });
+        });
 
-          // عند الضغط على كارد الفئة
-          $('.category-card').click(function (event) {
-              event.preventDefault();  // لمنع التغيير في الرابط
-              const categoryId = $(this).data('category-id');
-              
-              // إزالة الحدود الزرقاء من جميع الكروت وإخفاء الفئات الفرعية
-              $('.category-card').removeClass('border-primary');
-              $('.subcategories-container').slideUp();
+        // عند الضغط على كارد الفئة
+        $('.category-card').click(function (event) {
+          event.preventDefault();  // لمنع التغيير في الرابط
+          const categoryId = $(this).data('category-id');
 
-              // إضافة الحدود الزرقاء للفئة المختارة وإظهار الفئات الفرعية
-              $(this).addClass('border-primary');
-              
-              loadSubcategories(serviceId, categoryId);
-          });
+          // إزالة الحدود الزرقاء من جميع الكروت وإخفاء الفئات الفرعية
+          $('.category-card').removeClass('border-primary');
+          $('.subcategories-container').slideUp();
+
+          // إضافة الحدود الزرقاء للفئة المختارة وإظهار الفئات الفرعية
+          $(this).addClass('border-primary');
+
+          loadSubcategories(serviceId, categoryId);
+        });
       },
       error: function (err) {
-          console.error("Error fetching categories:", err);
+        console.error("Error fetching categories:", err);
       }
-  });
-};
+    });
+  };
 
 
-// تحميل الفئات الفرعية
-window.loadSubcategories = function (serviceId, categoryId) {
-  console.log("serviceId", serviceId);
-  console.log("categoryId", categoryId);
+  // تحميل الفئات الفرعية
+  window.loadSubcategories = function (serviceId, categoryId) {
+    console.log("serviceId", serviceId);
+    console.log("categoryId", categoryId);
 
-  $.ajax({
-    url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategories`,
-    method: "GET",
-    success: function (subcategories) {
-      const subcategoriesContainer = $(`#subcategories-${categoryId}`);
-      subcategoriesContainer.empty();
+    $.ajax({
+      url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategories`,
+      method: "GET",
+      success: function (subcategories) {
+        const subcategoriesContainer = $(`#subcategories-${categoryId}`);
+        subcategoriesContainer.empty();
 
-      // إضافة حاوية الفئات الفرعية التي تحتوي على الكروت
-      subcategoriesContainer.append('<div class="subcategory-row">');
+        // إضافة حاوية الفئات الفرعية التي تحتوي على الكروت
+        subcategoriesContainer.append('<div class="subcategory-row">');
 
-      subcategories.forEach((subcategory, index) => {
-        // توزيع الكروت على صفوف مكونة من 3 كروت
-        if (index % 3 === 0 && index !== 0) {
-          subcategoriesContainer.append('</div><div class="subcategory-row">'); // إضافة صف جديد بعد 3 كروت
-        }
+        subcategories.forEach((subcategory, index) => {
+          // توزيع الكروت على صفوف مكونة من 3 كروت
+          if (index % 3 === 0 && index !== 0) {
+            subcategoriesContainer.append('</div><div class="subcategory-row">'); // إضافة صف جديد بعد 3 كروت
+          }
 
-        // إضافة الكرت الخاص بالفئة الفرعية
-        subcategoriesContainer.append(`
+          // إضافة الكرت الخاص بالفئة الفرعية
+          subcategoriesContainer.append(`
           <div class="col-md-4 mb-4 mt-5">
             <div class="card subcategory-card" data-service-id="${serviceId}" data-category-id="${categoryId}" data-subcategory-id="${subcategory.subcategoryId}">
               <img src="${subcategory.imageUrl}" class="card-img-top" alt="${subcategory.title.en}" style="height: 36px; width: 40%; object-fit: cover;">
@@ -183,28 +235,28 @@ window.loadSubcategories = function (serviceId, categoryId) {
             </div>
           </div>
         `);
-      });
+        });
 
-      subcategoriesContainer.append('</div>'); // إغلاق الحاوية بعد إضافة كل الكروت
+        subcategoriesContainer.append('</div>'); // إغلاق الحاوية بعد إضافة كل الكروت
 
-      // إظهار الفئات الفرعية تحت الفئة المختارة
-      subcategoriesContainer.slideDown();
+        // إظهار الفئات الفرعية تحت الفئة المختارة
+        subcategoriesContainer.slideDown();
 
-      // عند الضغط على فئة فرعية، يتم فتح صفحة جديدة
-      $(".subcategory-card").click(function () {
-        const serviceId = $(this).data("service-id");
-        const categoryId = $(this).data("category-id");
-        const subcategoryId = $(this).data("subcategory-id");
+        // عند الضغط على فئة فرعية، يتم فتح صفحة جديدة
+        $(".subcategory-card").click(function () {
+          const serviceId = $(this).data("service-id");
+          const categoryId = $(this).data("category-id");
+          const subcategoryId = $(this).data("subcategory-id");
 
-        // الانتقال إلى صفحة جديدة مع تمرير المعلومات في الرابط
-        window.location.href = `subcategory.html?serviceId=${serviceId}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`;
-      });
-    },
-    error: function (err) {
-      console.error("Error fetching subcategories:", err);
-    },
-  });
-};
+          // الانتقال إلى صفحة جديدة مع تمرير المعلومات في الرابط
+          window.location.href = `subcategory.html?serviceId=${serviceId}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`;
+        });
+      },
+      error: function (err) {
+        console.error("Error fetching subcategories:", err);
+      },
+    });
+  };
 
 
   function loadSubcategoryDescription(serviceId, categoryId, subcategoryId) {
@@ -243,22 +295,41 @@ window.loadSubcategories = function (serviceId, categoryId) {
 
 });
 
-// بعد تحميل الصفحة
-// window.onload = function () {
-//   const token = localStorage.getItem('token');
-//   if (token) {
-//     const userName = localStorage.getItem('userName');
-//     document.getElementById('userFullName').textContent = userName;
-//   }
-// }
+document.addEventListener("DOMContentLoaded", function () {
+  const savedLang = localStorage.getItem("selectedLang") || "en"; // الافتراضي الإنجليزية
+  document.documentElement.lang = savedLang;
+  document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+  document.getElementById("selectedLang").textContent = document.querySelector(`[data-lang="${savedLang}"]`).textContent.trim();
 
-document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll(".change-lang").forEach(item => {
+      item.addEventListener("click", function (event) {
+          event.preventDefault();
+          const selectedLang = this.getAttribute("data-lang");
+          document.documentElement.lang = selectedLang;
+          document.documentElement.dir = selectedLang === "ar" ? "rtl" : "ltr";
+          document.getElementById("selectedLang").textContent = this.textContent.trim();
+          localStorage.setItem("selectedLang", selectedLang); // حفظ اللغة المختارة
+      });
+  });
+
   // Check if user data exists in localStorage
   const userName = localStorage.getItem('userName');
 
   if (userName) {
     // Display user name and dashboard link
-    document.getElementById('userName').textContent = `Welcome, ${userName}`;
+
+    let welcomeText = i18next.t('user_welcome');
+    console.log("test",welcomeText);
+    if (welcomeText === 'user_welcome') {
+      document.getElementById('userName').textContent = `${welcomeText}, ${userName}`;
+
+
+    } else {
+      document.getElementById('userName').textContent = `Welcome, ${userName}`;
+
+    }
+
+
     document.getElementById('dashboardLink').style.display = 'inline-block';
     document.getElementById('logoutBtn').style.display = 'inline-block';
 
