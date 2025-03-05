@@ -5,6 +5,35 @@
 
 
 $(document).ready(function () {
+//Clinic Config
+const clinicDomain = "user-api-server.onrender.com"; // غير هذا حسب العيادة الحالية
+    
+    $.ajax({
+        url: `${API_BASE_URL}/api/clinics/${clinicDomain}`,
+        method: "GET",
+        success: function (data) {
+          console.log("data of clinic config", data);
+            $("#clinicName").text(data.name);
+            $("#clinicLogo").attr("src", data.logo);
+            $("body").css({
+              "background-color": "red",
+                "--primary-color": data.theme.primaryColor,
+                "--secondary-color": data.theme.secondaryColor,
+                "font-family": data.theme.font
+            });
+
+            $("#features").html(`
+                <li>Online Booking: ${data.features.enableOnlineBooking ? "✅ Enabled" : "❌ Disabled"}</li>
+                <li>Chat Support: ${data.features.enableChat ? "✅ Enabled" : "❌ Disabled"}</li>
+            `);
+        },
+        error: function (err) {
+            console.error("Error fetching clinic data:", err);
+            $("#clinicName").text("❌ Error loading clinic data");
+        }
+    });
+
+
   // تهيئة i18next
   i18next
     .use(i18nextHttpBackend) // تحميل الترجمات من ملفات JSON

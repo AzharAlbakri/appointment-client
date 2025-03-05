@@ -32,7 +32,7 @@
 
 <body>
     <!-- Language Dropdown -->
-    <div class="container d-flex justify-content-end py-2">
+    <div id="headerLanguage" class="container d-flex justify-content-end py-2">
         <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" id="languageSwitcher" data-bs-toggle="dropdown">
                 <i class="bi bi-flag-fill me-2"></i> <span id="selectedLang" data-i18n="currentLang">Español</span>
@@ -53,7 +53,7 @@
     </div>
 
     <!-- Thin Top Header -->
-    <header class="top-header text-white py-2 bg-primary">
+    <header id="header1" class="top-header text-white py-2 bg-primary">
         <div class="container d-flex justify-content-between align-items-center">
             <!-- Left Section -->
             <div>
@@ -80,7 +80,7 @@
     </header>
 
     <!-- Thin Header -->
-    <header class="thin-header another-header bg-light text-dark py-3"
+    <header id="header2" class="thin-header another-header bg-light text-dark py-3"
         style="position: sticky; top: 0; z-index: 1030; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
         <div class="container d-flex align-items-center justify-content-between">
             <!-- Left Section: Logo and Clinic Name -->
@@ -104,7 +104,7 @@
     </header>
 
     <!-- Menu Bar -->
-    <nav class="menu-bar navbar navbar-expand-lg bg-primary text-white"
+    <nav id="headerNav" class="menu-bar navbar navbar-expand-lg bg-primary text-white"
         style="position: sticky; top: 133px; z-index: 1020;">
         <div class="container">
             <div class="d-flex">
@@ -144,7 +144,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-slider">
+    <section id="sectionHero" class="hero-slider">
         <!-- Consultation Form -->
         <div class="consultation-form">
             <form id="consultationForm">
@@ -252,7 +252,7 @@
     </section>
 
     <!-- Form Section -->
-    <section class="appointment-form-section py-5">
+    <section id="sectionAppointement" class="appointment-form-section py-5">
         <div class="container">
             <h2 class="text-center mb-4" data-i18n="appointment_schedule">Schedule Your Appointment Now</h2>
             <!-- Form -->
@@ -361,7 +361,7 @@
     </section>
 
     <!-- About -->
-    <section class="clinic-info py-5">
+    <section id="sectionAbout" class="clinic-info py-5">
         <div class="container">
             <div class="row">
                 <!-- Text -->
@@ -410,7 +410,7 @@
         </div>
     </section>
 
-    <section class="services-info py-5">
+    <section id="sectionServices" class="services-info py-5">
         <div class="container">
             <div id="servicesSection" class="row row-cols-1 row-cols-md-3 g-4">
                 <!-- Services will be populated here by jQuery -->
@@ -420,7 +420,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-3">
+    <footer id="Footer" class="bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <!-- Contact Information -->
