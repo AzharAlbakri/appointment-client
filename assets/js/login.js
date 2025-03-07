@@ -1,5 +1,3 @@
-// const BASE_URL = "http://localhost:3000";
-const BASE_URL = 'https://user-api-server.onrender.com';
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#loginForm').addEventListener('submit', function (event) {
@@ -21,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // إرسال طلب تسجيل الدخول إلى السيرفر
     async function loginUser(credentials) {
         try {
-            const response = await fetch(`${BASE_URL}/api/auth/login`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

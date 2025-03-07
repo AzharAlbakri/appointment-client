@@ -1,103 +1,7 @@
-//const BASE_URL = "http://localhost:3000";
-
-//const API_BASE_URL = 'https://user-api-server.onrender.com';
-
 
 
 $(document).ready(function () {
-//Clinic Config
-const clinicDomain = "user-api-server.onrender.com"; // غير هذا حسب العيادة الحالية
-    
-    $.ajax({
-        url: `${API_BASE_URL}/api/clinics/${clinicDomain}`,
-        method: "GET",
-        success: function (data) {
-          console.log("data of clinic config", data);
-            $("#clinicName").text(data.name);
-            $("#clinicLogo").attr("src", data.logo);
-            $("body").css({
-              "background-color": "red",
-                "--primary-color": data.theme.primaryColor,
-                "--secondary-color": data.theme.secondaryColor,
-                "font-family": data.theme.font
-            });
-
-            $("#features").html(`
-                <li>Online Booking: ${data.features.enableOnlineBooking ? "✅ Enabled" : "❌ Disabled"}</li>
-                <li>Chat Support: ${data.features.enableChat ? "✅ Enabled" : "❌ Disabled"}</li>
-            `);
-        },
-        error: function (err) {
-            console.error("Error fetching clinic data:", err);
-            $("#clinicName").text("❌ Error loading clinic data");
-        }
-    });
-
-
-  // تهيئة i18next
-  i18next
-    .use(i18nextHttpBackend) // تحميل الترجمات من ملفات JSON
-    .use(i18nextBrowserLanguageDetector) // اكتشاف لغة المتصفح
-    .init({
-      lng: localStorage.getItem("selectedLang") || "es", // استخدام اللغة المحفوظة أو الافتراضية
-      fallbackLng: "en", // اللغة الاحتياطية
-      debug: true,
-      backend: {
-        loadPath: `${API_BASE_URL}/locales/{{lng}}.json`, // مسار ملفات الترجمة
-        // url: `${API_BASE_URL}/services`,
-
-      }
-    }, function (err, t) {
-      if (err) return console.error("i18next error:", err);
-      updateContent();
-      updateLanguageButton(i18next.language);
-    });
-
-  // تحديث محتوى الصفحة بناءً على اللغة المحددة
-  window.updateContent = function () {
-    $("[data-i18n]").each(function () {
-      let key = $(this).attr("data-i18n");
-      $(this).text(i18next.t(key));
-    });
-  }
-
-  // تحديث زر القائمة المنسدلة ليعكس اللغة المختارة
-  window.updateLanguageButton = function (selectedLang) {
-    let langText = { "es": "Español", "en": "English", "ar": "العربية" };
-    $("#selectedLang").text(langText[selectedLang] || "Español");
-  }
-
-  // تغيير اللغة عند الاختيار
-  window.changeLanguage = function (selectedLang) {
-    console.log("Switching language to:", selectedLang);
-    i18next.changeLanguage(selectedLang, function (err) {
-      if (err) return console.error("Error changing language:", err);
-      updateContent();
-      updateLanguageButton(selectedLang);
-      localStorage.setItem("selectedLang", selectedLang); // حفظ اللغة في localStorage
-    });
-  }
-
-  // التعامل مع تغيير اللغة عند النقر على أي عنصر في القائمة
-  $(".change-lang").on("click", function (e) {
-    e.preventDefault();
-    let selectedLang = $(this).data("lang");
-    i18next.changeLanguage(selectedLang, function () {
-        updateContent();
-        updateLanguageButton(selectedLang);
-        localStorage.setItem("selectedLang", selectedLang);
-    });
-  });
-
-  // عند الضغط على زر الحجز
-  $("#reservationButton").on("click", function () {
-    alert(i18next.t("booking_message"));
-  });
-
-
-  //document.getElementById("consultationfullName").placeholder = i18next.t('enter_name');
-
-
+    fetchServices();
 
 
   // $('#google-login').click(function () {
@@ -113,8 +17,6 @@ const clinicDomain = "user-api-server.onrender.com"; // غير هذا حسب ا�
   //     }
   //   });
   // });
-
-
 
 
   $('#google-login').click(function () {
@@ -137,46 +39,6 @@ const clinicDomain = "user-api-server.onrender.com"; // غير هذا حسب ا�
     });
   });
 
-  // Fetch services from the API using AJAX
-  $.ajax({
-    url: `${API_BASE_URL}/services`,
-    method: 'GET',
-    success: function (data) {
-      if (data.length > 0) {
-        //const lang = 'en';  // حدد اللغة التي تريد استخدامها، مثل 'ar' أو 'en'
-        const lang = localStorage.getItem("selectedLang") || "en"; // الحصول على اللغة المختارة
-
-        data.forEach(service => {
-          console.log("service", service);
-
-          // تحديد اللغة للعنوان والوصف
-          const title = service.title[lang] || service.title['en']; // إذا كانت اللغة غير موجودة، استخدم 'en'
-          const description = service.description[lang] || service.description['en']; // نفس الشيء للوصف
-          const imageUrl = service.imageUrl;
-
-          $('#servicesSection').append(`
-            <div class="col">
-              <div class="card" data-service-id="${service.serviceId}">
-                <img src="${imageUrl}" class="card-img-top" alt="${title}">
-                <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                  <h5 class="card-title text-white">${title}</h5>
-                </div>
-              </div>
-            </div>
-          `);
-        });
-
-        // إضافة حدث النقر للانتقال إلى صفحة الفئات
-        $('.card').click(function () {
-          const serviceId = $(this).data('service-id');
-          window.location.href = `categories.html?serviceId=${serviceId}`; // توجيه المستخدم إلى صفحة الفئات
-        });
-      }
-    },
-    error: function (err) {
-      console.error("Error fetching services:", err);
-    }
-  });
 
   // جعل الدالة متاحة عالميًا
   window.loadCategories = function (serviceId) {
@@ -320,27 +182,48 @@ const clinicDomain = "user-api-server.onrender.com"; // غير هذا حسب ا�
     });
   }
 
-
-
 });
 
+
+function fetchServices() {
+    $.ajax({
+        url: `${API_BASE_URL}/services`,
+        method: "GET",
+        success: function (data) {
+            renderServices(data);
+        },
+        error: function (err) {
+            console.error("Error fetching services:", err);
+        }
+    });
+}
+
+function renderServices(services) {
+    if (services.length === 0) return;
+    const lang = localStorage.getItem("selectedLang") || "en";
+    services.forEach(service => {
+        const title = service.title[lang] || service.title['en'];
+        const description = service.description[lang] || service.description['en'];
+        const imageUrl = service.imageUrl;
+        $("#servicesSection").append(`
+            <div class="col">
+                <div class="card" data-service-id="${service.serviceId}">
+                    <img src="${imageUrl}" class="card-img-top" alt="${title}">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <h5 class="card-title text-white">${title}</h5>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+    $(".card").click(function () {
+        const serviceId = $(this).data("service-id");
+        window.location.href = `categories.html?serviceId=${serviceId}`;
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  const savedLang = localStorage.getItem("selectedLang") || "en"; // الافتراضي الإنجليزية
-  document.documentElement.lang = savedLang;
-  document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
-  document.getElementById("selectedLang").textContent = document.querySelector(`[data-lang="${savedLang}"]`).textContent.trim();
-
-  document.querySelectorAll(".change-lang").forEach(item => {
-      item.addEventListener("click", function (event) {
-          event.preventDefault();
-          const selectedLang = this.getAttribute("data-lang");
-          document.documentElement.lang = selectedLang;
-          document.documentElement.dir = selectedLang === "ar" ? "rtl" : "ltr";
-          document.getElementById("selectedLang").textContent = this.textContent.trim();
-          localStorage.setItem("selectedLang", selectedLang); // حفظ اللغة المختارة
-      });
-  });
-
+ 
   // Check if user data exists in localStorage
   const userName = localStorage.getItem('userName');
 
@@ -373,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutBtn.addEventListener('click', function () {
       // Clear user data from localStorage
       localStorage.removeItem('userName');
-      localStorage.removeItem('userNameuserEmail');
+      localStorage.removeItem('userEmail');
       localStorage.removeItem('token');
 
       // Redirect to homepage or login page

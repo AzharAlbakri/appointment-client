@@ -7,8 +7,8 @@ body {
 
 /* تنسيق الهيدر */
 header {
-  background-color: #343a40;
-  color: white;
+  background-color:var(--primary-color) !important;
+  color: var(--primary-font-color) !important;
 }
 
 header a {
@@ -23,7 +23,7 @@ button {
 
 .top-header,
 .menu-bar {
-  background: rgb(4 104 121) !important;
+  background-color:var(--primary-color) !important;
 }
 
 .menu-bar a.nav-link {
@@ -168,7 +168,7 @@ a.btn.btn-primary {
 }
 
 .clinic-info {
-  background-color: #046879;
+  background-color: var(--primary-color) !important;
 }
 
 .clinic-info h2 {
@@ -266,7 +266,7 @@ a.btn.btn-primary {
 }
 
 footer {
-  background-color: #343a40;
+  background-color: var(--primary-color) !important;
   /* لون الخلفية */
   color: #fff;
 }

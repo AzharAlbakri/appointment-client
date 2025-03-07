@@ -1,5 +1,3 @@
-const BASE_URL = "http://localhost:3000";
-
 document.addEventListener('DOMContentLoaded', function () {
     // التعامل مع إرسال نموذج التسجيل
     document.querySelector('#signupForm').addEventListener('submit', function (event) {
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function registerUser(formData) {
         console.log("registerUser");
         try {
-            const response = await fetch(`${BASE_URL}/api/auth/signup`, {
+            const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

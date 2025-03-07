@@ -1,0 +1,145 @@
+// URL الأساسي للسيرفر
+// const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = 'https://user-api-server.onrender.com';
+
+$(document).ready(function () {
+    const clinicDomain = "user-api-server.onrender.com";
+
+    fetchClinicConfig(clinicDomain);
+    initializeI18n();
+    setupEventListeners();
+});
+
+
+function fetchClinicConfig(domain) {
+    $.ajax({
+        url: `${API_BASE_URL}/api/clinics/${domain}`,
+        method: "GET",
+        success: function (data) {
+            console.log("config data for domain", data)
+            updateClinicUI(data);
+        },
+        error: function (err) {
+            console.error("Error fetching clinic data:", err);
+            $("#clinicName").text("❌ Error loading clinic data");
+        }
+    });
+}
+
+function updateClinicUI(data) {
+
+    console.log(data.theme.primaryColor);
+
+    //CSS VARIABLES
+    document.documentElement.style.setProperty("--primary-color", data.theme.primaryColor);
+    document.documentElement.style.setProperty("--primary-font-color", data.theme.primaryFontColor);
+    document.documentElement.style.setProperty("--secondary-color", data.theme.secondaryColor);
+    document.documentElement.style.setProperty("--secondary-font-color", data.theme.secondaryFontColor);
+
+    $("body").css({
+        "--primary-color": data.theme.primaryColor,
+        "--secondary-color": data.theme.secondaryColor,
+        "font-family": data.theme.font
+    });
+
+    //TEXT
+    $(".clinic-mobile").text(data.clinicInfo.mobile);
+    $(".clinic-whatsapp").text(data.clinicInfo.whatsapp);
+    $(".hospital-name").text(data.clinicInfo.hospitalName);
+    $(".full-name-and-titles").text(data.clinicInfo.fullNameAndTitles);
+    $(".specialty").text(data.clinicInfo.specialty);
+    $(".job-title").text(data.clinicInfo.jobTitle);
+    $(".additional-degree").text(data.clinicInfo.additionalDegree);
+    $(".academic-position").text(data.clinicInfo.academicPosition);
+    $(".cinic-about").text(data.clinicInfo.about);
+    $(".contact-telephone").text(data.clinicInfo.contact);
+    $(".clinic-email").text(data.clinicInfo.email);
+    $(".clinic-copyright").text(data.clinicInfo.copyright);
+
+
+    $(".clinic-facebook").attr("href", data.socialMedia.instagram);
+    $(".clinic-instagram").attr("href",data.socialMedia.instagram);
+    $(".clinic-twitter").attr("href",data.socialMedia.linkedin);
+
+    //SRC
+    $(".clinic-logo").attr("src", data.logo);
+
+    //HIDE AND SHOW
+    updateLanguageDropdown(data.languageList);
+    $("#features").html(`
+        <li>Online Booking: ${data.features.enableOnlineBooking ? "✅ Enabled" : "❌ Disabled"}</li>
+        <li>Chat Support: ${data.features.enableChat ? "✅ Enabled" : "❌ Disabled"}</li>
+    `);
+}
+
+function updateLanguageDropdown(languages) {
+    const dropdownMenu = $("#headerLanguage .dropdown-menu");
+    dropdownMenu.empty();
+    if (!languages || languages.length === 0) {
+        dropdownMenu.append('<li class="text-muted px-3">No languages available</li>');
+        return;
+    }
+    languages.forEach(lang => {
+        dropdownMenu.append(`
+            <li>
+                <a class="dropdown-item change-lang" href="#" data-lang="${lang.code}">
+                    <i class="bi bi-flag-fill me-2"></i> ${lang.name}
+                </a>
+            </li>
+        `);
+    });
+    const defaultLang = languages.find(lang => lang.default) || languages[0];
+    if (defaultLang) {
+        $("#selectedLang").text(defaultLang.name).attr("data-lang", defaultLang.name);
+    }
+}
+
+function initializeI18n() {
+    i18next.use(i18nextHttpBackend).use(i18nextBrowserLanguageDetector).init({
+        lng: localStorage.getItem("selectedLang") || "es",
+        fallbackLng: "en",
+        debug: true,
+        backend: { loadPath: `${API_BASE_URL}/locales/{{lng}}.json` }
+    }, function (err, t) {
+        if (err) return console.error("i18next error:", err);
+        updateContent();
+        updateLanguageButton(i18next.language);
+    });
+}
+
+function updateContent() {
+    $("[data-i18n]").each(function () {
+        let key = $(this).attr("data-i18n");
+        $(this).text(i18next.t(key));
+    });
+}
+
+function updateLanguageButton(selectedLang) {
+    let langText = { "es": "Espanol", "en": "English", "ar": "العربية" };
+    $("#selectedLang").text(langText[selectedLang] || "Espanol");
+}
+
+function setupEventListeners() {
+    $(document).on("click", ".change-lang", function (e) {
+        e.preventDefault();
+        let selectedLang = $(this).data("lang");
+        changeLanguage(selectedLang);
+    });
+
+    $("#reservationButton").on("click", function () {
+        alert(i18next.t("booking_message"));
+    });
+
+    $("#google-login").click(function () {
+        window.location.href = API_BASE_URL;
+    });
+}
+
+function changeLanguage(selectedLang) {
+    i18next.changeLanguage(selectedLang, function (err) {
+        if (err) return console.error("Error changing language:", err);
+        updateContent();
+        updateLanguageButton(selectedLang);
+        localStorage.setItem("selectedLang", selectedLang);
+    });
+}

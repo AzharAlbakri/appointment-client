@@ -1,5 +1,3 @@
-//const API_BASE_URL = 'https://user-api-server.onrender.com';
-const API_BASE_URL = 'http://localhost:3000';
 
 // دالة لحجز استشارة
 function bookConsultation(data) {

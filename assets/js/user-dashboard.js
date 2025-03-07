@@ -19,33 +19,6 @@ $(document).ready(function () {
     });
 
 
-    // إحضار معلومات المستخدم من الـ localStorage (أو الـ API)
-     let userName = localStorage.getItem('userName');
-    let userEmail = localStorage.getItem('userEmail');
-    // إحضار معلومات المستخدم من الـ localStorage (أو الـ API)
-    // let user = JSON.parse(localStorage.getItem('user'));
-    // التحقق من وجود البيانات واستبدال الفراغات بـ "_"
-    if (userName) {
-        userName = userName.replace(/ /g, "_");
-    } else {
-        userName = "user";
-    }
-
-    if (!userEmail) {
-        userEmail = "email";
-    }
-
-      // عرض البيانات في الـ Navbar
-    $('#userInfo').text(`${userName} (${userEmail})`);
-
-
-    // تسجيل الخروج
-    $('#logoutLink').on('click', function () {
-        localStorage.removeItem('token'); // حذف التوكن
-        window.location.href = 'index.html'; // إعادة التوجيه لصفحة تسجيل الدخول
-    });
-
-
     // التعامل مع الروابط في الـ Sidebar
     $('#settingsLink').on('click', function () {
         loadSettings();
@@ -86,4 +59,42 @@ $(document).ready(function () {
     function loadFavoriteArticles() {
         $('#content').html('<h3>Loading Favorite Articles...</h3>');
     }
+
 });
+document.addEventListener("DOMContentLoaded", function () {
+ 
+    // Check if user data exists in localStorage
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
+  
+    if (userName) {
+      // Display user name and dashboard link
+  
+      let welcomeText = i18next.t('user_welcome');
+      console.log("test",welcomeText);
+      if (welcomeText === 'user_welcome') {
+        document.getElementById('userInfo').textContent = `${welcomeText}, ${userName} (${userEmail})`;
+  
+      } else {
+        document.getElementById('userInfo').textContent = `Welcome, ${userName} (${userEmail})`;
+  
+      }
+      document.getElementById('logoutLink').style.display = 'inline-block';
+  
+      
+    }
+  
+    // Handle logout
+    const logoutBtn = document.getElementById('logoutLink');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function () {
+        // Clear user data from localStorage
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('token');
+  
+        // Redirect to homepage or login page
+        window.location.href = 'index';
+      });
+    }
+  });

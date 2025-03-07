@@ -1,11 +1,7 @@
-// URL الأساسي للسيرفر
-//const BASE_URL = "http://localhost:3000";
-const BASE_URL = 'https://user-api-server.onrender.com';
-
 // جلب جميع المواعيد من السيرفر
 async function fetchAppointments() {
     try {
-        const response = await fetch(`${BASE_URL}/getAllAppointments`);
+        const response = await fetch(`${API_BASE_URL}/getAllAppointments`);
         if (!response.ok) throw new Error("Failed to fetch appointments.");
 
         const appointments = await response.json();
@@ -86,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // إرسال طلب حجز الموعد
 async function bookAppointment(formData) {
     try {
-        const response = await fetch(`${BASE_URL}/bookAppointment`, {
+        const response = await fetch(`${API_BASE_URL}/bookAppointment`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
@@ -135,7 +131,7 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
 async function submitConsultationForm(formData) {
     try {
       // إرسال الطلب إلى API إضافة المستخدم
-      const response = await fetch(`${BASE_URL}/addUser`, {
+      const response = await fetch(`${API_BASE_URL}/addUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
