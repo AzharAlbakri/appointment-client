@@ -1,5 +1,5 @@
 
-// دالة لحجز استشارة
+// Function to book a consultation
 function bookConsultation(data) {
   $.ajax({
     url: `${API_BASE_URL}/bookAppointment`,

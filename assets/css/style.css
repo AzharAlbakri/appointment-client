@@ -1,11 +1,9 @@
-/* تخصيص الخلفيات */
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
   color: #212529;
 }
 
-/* تنسيق الهيدر */
 header {
   background-color:var(--primary-color) !important;
   color: var(--primary-font-color) !important;
@@ -16,7 +14,6 @@ header a {
   text-decoration: none;
 }
 
-/* تنسيق الزر */
 button {
   border-radius: 5px;
 }
@@ -61,17 +58,13 @@ a.btn.btn-primary {
   position: absolute;
   top: 50%;
   right: 16%;
-  /* الموقع من الجهة اليمنى */
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
-  /* خلفية بيضاء مع شفافية */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 25%;
-  /* يشغل ربع القسم */
   z-index: 10;
-  /* للتأكد أنه يظهر فوق السلايدر */
 }
 
 .consultation-form h4 {
@@ -132,7 +125,6 @@ a.btn.btn-primary {
 .menu-bar {
   position: sticky;
   top: 58px;
-  /* ارتفاع الـ thin-header */
   z-index: 1020;
 }
 
@@ -148,23 +140,15 @@ a.btn.btn-primary {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  /* الطبقة الغامقة */
   z-index: 0;
-  /* الطبقة الغامقة تحت كل شيء */
 }
 
 .carousel-caption {
   position: absolute;
-  /* وضع النص فوق الصورة */
   bottom: 38%;
-  /* مسافة من الأسفل */
   left: 16.5%;
-  /* مسافة من اليسار */
   z-index: 2;
-  /* النص يظهر فوق الطبقة الغامقة */
   color: white;
-  /* لون النص */
-  
 }
 
 .clinic-info {
@@ -208,9 +192,7 @@ a.btn.btn-primary {
 .clinic-info .row {
   display: flex;
   align-items: stretch;
-  /* تضمن أن النص والسلايدر بنفس الارتفاع */
   height: 480px;
-  /* الارتفاع الثابت المطلوب */
 }
 
 .clinic-info .col-md-6 {
@@ -221,7 +203,6 @@ a.btn.btn-primary {
 
 .clinic-info .carousel {
   height: 100%;
-  /* السلايدر بنفس ارتفاع النص */
 }
 
 .clinic-info .carousel-inner {
@@ -232,18 +213,13 @@ a.btn.btn-primary {
   height: 100%;
   display: flex;
   align-items: center;
-  /* لتمركز الصورة عموديًا */
   justify-content: center;
-  /* لتمركز الصورة أفقيًا */
 }
 
 .clinic-info .carousel-item img {
   max-height: 100%;
-  /* ضبط ارتفاع الصورة بما يناسب السلايدر */
   max-width: 100%;
-  /* ضبط العرض مع الحفاظ على التناسب */
   object-fit: contain;
-  /* التأكد من أن الصورة تناسب الإطار بدون قص */
   border-radius: 10px;
 }
 
@@ -256,7 +232,7 @@ a.btn.btn-primary {
 
 #clinicCarousel .carousel-control-prev,
 #clinicCarousel .carousel-control-next {
-  z-index: 5; /* التأكد من أن الأزرار تظهر فوق الصورة */
+  z-index: 5;
 }
 
 #clinicCarousel .carousel-item img {
@@ -267,7 +243,6 @@ a.btn.btn-primary {
 
 footer {
   background-color: var(--primary-color) !important;
-  /* لون الخلفية */
   color: #fff;
 }
 
@@ -278,13 +253,11 @@ footer h5 {
 
 footer a {
   color: #ffffffb3;
-  /* لون أفتح للروابط */
   text-decoration: none;
 }
 
 footer a:hover {
   color: #ffffff;
-  /* أبيض عند التمرير */
   text-decoration: underline;
 }
 
@@ -322,14 +295,12 @@ footer ul.list-inline li {
 
 .social-icons a:hover {
   color: #007bff;
-  /* لون أيقونات التواصل عند التمرير */
 }
 
 footer.bg-dark.text-white.pt-5.pb-3 {
   background-color: rgb(4 104 121) !important
 }
 
-/* تنسيق للكروت داخل الصف */
 /* .subcategory-row {
   display: flex;
   flex-wrap: wrap; 
