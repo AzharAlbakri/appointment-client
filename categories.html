@@ -269,16 +269,16 @@
     <script>
         $(document).ready(function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const serviceId = urlParams.get('serviceId');
+            const sectionId = urlParams.get('sectionId');
 
-            if (serviceId) {
+            if (sectionId) {
                 if (typeof loadCategories === "function") {
-                    loadCategories(serviceId);
+                    loadCategories(sectionId);
                 } else {
                     console.error("Function loadCategories is not defined. Check if app.js is loaded.");
                 }
             } else {
-                console.error("Service ID not found in URL");
+                console.error("Section ID not found in URL");
             }
         });
     </script>

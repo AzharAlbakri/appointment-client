@@ -152,8 +152,8 @@
     </nav>
 
     <div class="container mt-5" id="contentContainer">
-        <!-- <h2 id="serviceTitle"></h2>
-    <p id="serviceDescription"></p>
+        <!-- <h2 id="sectionTitle"></h2>
+    <p id="sectionDescription"></p>
     
     <h3 id="categoryTitle"></h3>
     <p id="categoryDescription"></p>
@@ -273,27 +273,27 @@
 
         $(document).ready(function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const serviceId = urlParams.get('serviceId');
+            const sectionId = urlParams.get('sectionId');
             const categoryId = urlParams.get('categoryId');
             const subcategoryId = urlParams.get('subcategoryId');
 
-            if (serviceId && categoryId && subcategoryId) {
-                loadSubcategoryDetails(serviceId, categoryId, subcategoryId);
+            if (sectionId && categoryId && subcategoryId) {
+                loadSubcategoryDetails(sectionId, categoryId, subcategoryId);
             } else {
                 console.error("Missing parameters in URL");
             }
         });
 
-        function loadSubcategoryDetails(serviceId, categoryId, subcategoryId) {
+        function loadSubcategoryDetails(sectionId, categoryId, subcategoryId) {
             const lang = 'en';
 
             $.ajax({
-                url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategory/${subcategoryId}`,
+                url: `${API_BASE_URL}/section/${sectionId}/category/${categoryId}/subcategory/${subcategoryId}`,
                 method: 'GET',
                 success: function (data) {
                     console.log("data", data);
-                    // $('#serviceTitle').text(data.title[lang] || data.title['en']);
-                    // $('#serviceDescription').text(data.description[lang] || data.description['en']);
+                    // $('#sectionTitle').text(data.title[lang] || data.title['en']);
+                    // $('#sectionDescription').text(data.description[lang] || data.description['en']);
 
                     // $('#categoryTitle').text(data.category.title[lang] || data.category.title['en']);
                     // $('#categoryDescription').text(data.category.description[lang] || data.category.description['en']);

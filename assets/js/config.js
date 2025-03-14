@@ -3,8 +3,18 @@
 const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 $(document).ready(function () {
-    const clinicDomain = "user-api-server.onrender.com";
+    // const clinicDomain = "user-api-server.onrender.com";
 
+    $("#sectionAbout").hide();
+    $("#sectionAppointment").hide();
+    $(".consultation-form").hide();
+    $("#Footer").hide();
+    $("#userNav").hide();
+    $("#sectionHero").hide();
+    $("#servicesSection").hide();
+    $(".btn-book-appointment").hide();
+
+    const clinicDomain = "AaronClinic";
     fetchClinicConfig(clinicDomain);
     initializeI18n();
     setupEventListeners();
@@ -58,14 +68,28 @@ function updateClinicUI(data) {
 
 
     $(".clinic-facebook").attr("href", data.socialMedia.instagram);
-    $(".clinic-instagram").attr("href",data.socialMedia.instagram);
-    $(".clinic-twitter").attr("href",data.socialMedia.linkedin);
+    $(".clinic-instagram").attr("href", data.socialMedia.instagram);
+    $(".clinic-twitter").attr("href", data.socialMedia.linkedin);
 
     //SRC
-    $(".clinic-logo").attr("src", data.logo);
+    $(".clinic-logo").attr("src", data.logo || "assets/images/defaultLogo.png");
 
     //HIDE AND SHOW
+    data.sections.aboutSection ? $("#sectionAbout").show() : $("#sectionAbout").hide();
+    data.sections.appointmentSection ? $("#sectionAppointement").show() : $("#sectionAppointement").hide();
+    data.sections.consultationForm ? $(".consultation-form").show() : $(".consultation-form").hide();
+    data.sections.footerSection ? $("#Footer").show() : $("#Footer").hide();
+    data.sections.login ? $("#userNav").show() : $("#userNav").hide();
+    data.sections.heroSection ? $("#sectionHero").show() : $("#sectionHero").hide();
+    data.sections.servicesSection ? $("#sectionSections").show() : $("#sectionSections").hide();
+    data.features.enableOnlineBooking ? $(".btn-book-appointment").show() : $(".btn-book-appointment").hide();
+
+    
+
+
     updateLanguageDropdown(data.languageList);
+
+
     $("#features").html(`
         <li>Online Booking: ${data.features.enableOnlineBooking ? "✅ Enabled" : "❌ Disabled"}</li>
         <li>Chat Support: ${data.features.enableChat ? "✅ Enabled" : "❌ Disabled"}</li>

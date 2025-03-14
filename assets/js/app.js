@@ -1,7 +1,7 @@
 
 
 $(document).ready(function () {
-    fetchServices();
+    fetchSections();
 
 
   // $('#google-login').click(function () {
@@ -41,11 +41,11 @@ $(document).ready(function () {
 
 
   // جعل الدالة متاحة عالميًا
-  window.loadCategories = function (serviceId) {
+  window.loadCategories = function (sectionId) {
     const lang = 'en';
 
     $.ajax({
-      url: `${API_BASE_URL}/service/${serviceId}/categories`,
+      url: `${API_BASE_URL}/section/${sectionId}/categories`,
       method: 'GET',
       success: function (categories) {
         $('#categoriesSection').empty();
@@ -82,7 +82,7 @@ $(document).ready(function () {
           // إضافة الحدود الزرقاء للفئة المختارة وإظهار الفئات الفرعية
           $(this).addClass('border-primary');
 
-          loadSubcategories(serviceId, categoryId);
+          loadSubcategories(sectionId, categoryId);
         });
       },
       error: function (err) {
@@ -93,12 +93,12 @@ $(document).ready(function () {
 
 
   // تحميل الفئات الفرعية
-  window.loadSubcategories = function (serviceId, categoryId) {
-    console.log("serviceId", serviceId);
+  window.loadSubcategories = function (sectionId, categoryId) {
+    console.log("sectionId", sectionId);
     console.log("categoryId", categoryId);
 
     $.ajax({
-      url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategories`,
+      url: `${API_BASE_URL}/section/${sectionId}/category/${categoryId}/subcategories`,
       method: "GET",
       success: function (subcategories) {
         const subcategoriesContainer = $(`#subcategories-${categoryId}`);
@@ -116,12 +116,12 @@ $(document).ready(function () {
           // إضافة الكرت الخاص بالفئة الفرعية
           subcategoriesContainer.append(`
           <div class="col-md-4 mb-4 mt-5">
-            <div class="card subcategory-card" data-service-id="${serviceId}" data-category-id="${categoryId}" data-subcategory-id="${subcategory.subcategoryId}">
+            <div class="card subcategory-card" data-section-id="${sectionId}" data-category-id="${categoryId}" data-subcategory-id="${subcategory.subcategoryId}">
               <img src="${subcategory.imageUrl}" class="card-img-top" alt="${subcategory.title.en}" style="height: 36px; width: 40%; object-fit: cover;">
               <div class="card-body">
                 <h6 class="card-title" style="font-size: 14px; font-weight: bold;">${subcategory.title.en}</h6>
                 <p class="card-text" style="font-size: 12px; color: #555;">${subcategory.description.en}</p>
-                <a href="subcategory.html?serviceId=${serviceId}&categoryId=${categoryId}&subcategoryId=${subcategory.subcategoryId}" class="btn btn-sm btn-primary">Read More</a>
+                <a href="subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}&subcategoryId=${subcategory.subcategoryId}" class="btn btn-sm btn-primary">Read More</a>
               </div>
             </div>
           </div>
@@ -135,12 +135,12 @@ $(document).ready(function () {
 
         // عند الضغط على فئة فرعية، يتم فتح صفحة جديدة
         $(".subcategory-card").click(function () {
-          const serviceId = $(this).data("service-id");
+          const sectionId = $(this).data("section-id");
           const categoryId = $(this).data("category-id");
           const subcategoryId = $(this).data("subcategory-id");
 
           // الانتقال إلى صفحة جديدة مع تمرير المعلومات في الرابط
-          window.location.href = `subcategory.html?serviceId=${serviceId}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`;
+          window.location.href = `subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}&subcategoryId=${subcategoryId}`;
         });
       },
       error: function (err) {
@@ -150,14 +150,14 @@ $(document).ready(function () {
   };
 
 
-  function loadSubcategoryDescription(serviceId, categoryId, subcategoryId) {
+  function loadSubcategoryDescription(sectionId, categoryId, subcategoryId) {
     const lang = 'en'; // أو يمكنك تحديد اللغة من الـ query أو من مكان آخر
 
     $.ajax({
-      url: `${API_BASE_URL}/service/${serviceId}/category/${categoryId}/subcategory/${subcategoryId}`,
+      url: `${API_BASE_URL}/section/${sectionId}/category/${categoryId}/subcategory/${subcategoryId}`,
       method: 'GET',
       success: function (subcategory) {
-        $('#servicesSection').empty(); // Clear the current content
+        $('#sectionsSection').empty(); // Clear the current content
 
         // استخدام اللغة المحددة في العنوان والوصف والمحتوى
         const title = subcategory.title[lang] || subcategory.title['en'];
@@ -165,7 +165,7 @@ $(document).ready(function () {
         const content = subcategory.content[lang] || subcategory.content['en'];
 
         // إضافة البيانات إلى الـ HTML
-        $('#servicesSection').append(`
+        $('#sectionsSection').append(`
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">${title}</h5>
@@ -185,29 +185,29 @@ $(document).ready(function () {
 });
 
 
-function fetchServices() {
+function fetchSections() {
     $.ajax({
-        url: `${API_BASE_URL}/services`,
+        url: `${API_BASE_URL}/sections`,
         method: "GET",
         success: function (data) {
-            renderServices(data);
+            renderSections(data);
         },
         error: function (err) {
-            console.error("Error fetching services:", err);
+            console.error("Error fetching sections:", err);
         }
     });
 }
 
-function renderServices(services) {
-    if (services.length === 0) return;
+function renderSections(sections) {
+    if (sections.length === 0) return;
     const lang = localStorage.getItem("selectedLang") || "en";
-    services.forEach(service => {
-        const title = service.title[lang] || service.title['en'];
-        const description = service.description[lang] || service.description['en'];
-        const imageUrl = service.imageUrl;
-        $("#servicesSection").append(`
+    sections.forEach(section => {
+        const title = section.title[lang] || section.title['en'];
+        const description = section.description[lang] || section.description['en'];
+        const imageUrl = section.imageUrl;
+        $("#sectionsSection").append(`
             <div class="col">
-                <div class="card" data-service-id="${service.serviceId}">
+                <div class="card" data-section-id="${section.sectionId}">
                     <img src="${imageUrl}" class="card-img-top" alt="${title}">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
                         <h5 class="card-title text-white">${title}</h5>
@@ -217,8 +217,8 @@ function renderServices(services) {
         `);
     });
     $(".card").click(function () {
-        const serviceId = $(this).data("service-id");
-        window.location.href = `categories.html?serviceId=${serviceId}`;
+        const sectionId = $(this).data("section-id");
+        window.location.href = `categories.html?sectionId=${sectionId}`;
     });
 }
 
