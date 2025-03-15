@@ -1,43 +1,130 @@
-// جلب جميع المواعيد من السيرفر
+// // جلب جميع المواعيد من السيرفر
+// async function fetchAppointments() {
+//     try {
+//         const response = await fetch(`${API_BASE_URL}/getAllAppointments`);
+//         if (!response.ok) throw new Error("Failed to fetch appointments.");
+
+//         const appointments = await response.json();
+//         return appointments;
+//     } catch (error) {
+//         console.error("Error fetching appointments:", error);
+//         return [];
+//     }
+// }
+
+// // تحديث خيارات الوقت والتاريخ في الفورم
+// async function updateCalendar() {
+//     const today = new Date();
+//     const appointmentDateInput = document.querySelector('#appointmentDate');
+//     const appointmentTimeInput = document.querySelector('#appointmentTime');
+
+//     // جلب جميع المواعيد من السيرفر
+//     const appointments = await fetchAppointments();
+
+//     // تعطيل الأيام السابقة
+//     appointmentDateInput.addEventListener('change', () => {
+//         const selectedDate = new Date(appointmentDateInput.value);
+//         const availableTimes = [];
+
+//         // تصفية المواعيد بناءً على التاريخ المختار
+//         appointments.forEach(appointment => {
+//             const appointmentDate = new Date(`${appointment.date}T${appointment.time}`);
+//             if (appointment.date === appointmentDateInput.value && appointment.status !== 'booked') {
+//                 if (appointmentDate > today) {
+//                     availableTimes.push(appointment.time);
+//                 }
+//             }
+//         });
+
+//         // تحديث خيارات الوقت
+//         appointmentTimeInput.innerHTML = ''; // مسح الخيارات السابقة
+//         if (availableTimes.length > 0) {
+//             availableTimes.forEach(time => {
+//                 const option = document.createElement('option');
+//                 option.value = time;
+//                 option.textContent = time;
+//                 appointmentTimeInput.appendChild(option);
+//             });
+//             appointmentTimeInput.disabled = false;
+//         } else {
+//             const option = document.createElement('option');
+//             option.textContent = 'لا توجد أوقات متاحة';
+//             appointmentTimeInput.appendChild(option);
+//             appointmentTimeInput.disabled = true;
+//         }
+//     });
+
+//     // تعطيل التواريخ التي ليس لها مواعيد متاحة أو قبل اليوم الحالي
+//     const minDate = today.toISOString().split('T')[0]; // الحد الأدنى للتاريخ
+//     appointmentDateInput.min = minDate;
+
+//     const disabledDates = appointments
+//         .filter(appointment => appointment.status === 'booked' || new Date(appointment.date) < today)
+//         .map(appointment => appointment.date);
+
+//     appointmentDateInput.addEventListener('input', () => {
+//         const selectedDate = appointmentDateInput.value;
+//         if (disabledDates.includes(selectedDate)) {
+//             appointmentDateInput.setCustomValidity('هذا التاريخ غير متاح.');
+//         } else {
+//             appointmentDateInput.setCustomValidity('');
+//         }
+//     });
+// }
+
+// // استدعاء تحديث الرزنامة عند تحميل الصفحة
+// document.addEventListener('DOMContentLoaded', () => {
+//     updateCalendar();
+
+    
+// });
+
 async function fetchAppointments() {
     try {
         const response = await fetch(`${API_BASE_URL}/getAllAppointments`);
         if (!response.ok) throw new Error("Failed to fetch appointments.");
 
         const appointments = await response.json();
-        return appointments;
+        
+        // طباعة البيانات المسترجعة للتحقق من تنسيقها
+        console.log("Appointments:", appointments);
+
+        // التحقق من أن المواعيد تحتوي على تاريخ ووقت صحيحين
+        const validAppointments = appointments.filter(appointment => {
+            return appointment.date && appointment.time;
+        });
+
+        return validAppointments;
     } catch (error) {
         console.error("Error fetching appointments:", error);
         return [];
     }
 }
 
-// تحديث خيارات الوقت والتاريخ في الفورم
 async function updateCalendar() {
     const today = new Date();
     const appointmentDateInput = document.querySelector('#appointmentDate');
     const appointmentTimeInput = document.querySelector('#appointmentTime');
 
-    // جلب جميع المواعيد من السيرفر
+    // Fetch all appointments from the server
     const appointments = await fetchAppointments();
 
-    // تعطيل الأيام السابقة
+    // Disable previous days
     appointmentDateInput.addEventListener('change', () => {
         const selectedDate = new Date(appointmentDateInput.value);
         const availableTimes = [];
 
-        // تصفية المواعيد بناءً على التاريخ المختار
+        // Filter appointments based on the selected date
         appointments.forEach(appointment => {
             const appointmentDate = new Date(`${appointment.date}T${appointment.time}`);
+            // Ensure the appointment matches the selected day and is not booked
             if (appointment.date === appointmentDateInput.value && appointment.status !== 'booked') {
-                if (appointmentDate > today) {
-                    availableTimes.push(appointment.time);
-                }
+                availableTimes.push(appointment.time);
             }
         });
 
-        // تحديث خيارات الوقت
-        appointmentTimeInput.innerHTML = ''; // مسح الخيارات السابقة
+       // Update time options
+        appointmentTimeInput.innerHTML = '';// Clear previous options
         if (availableTimes.length > 0) {
             availableTimes.forEach(time => {
                 const option = document.createElement('option');
@@ -48,14 +135,14 @@ async function updateCalendar() {
             appointmentTimeInput.disabled = false;
         } else {
             const option = document.createElement('option');
-            option.textContent = 'لا توجد أوقات متاحة';
+            option.textContent = 'No available times';
             appointmentTimeInput.appendChild(option);
             appointmentTimeInput.disabled = true;
         }
     });
 
-    // تعطيل التواريخ التي ليس لها مواعيد متاحة أو قبل اليوم الحالي
-    const minDate = today.toISOString().split('T')[0]; // الحد الأدنى للتاريخ
+    // Disable dates that have no available appointments or are before today
+    const minDate = today.toISOString().split('T')[0]; // Minimum date
     appointmentDateInput.min = minDate;
 
     const disabledDates = appointments
@@ -72,14 +159,17 @@ async function updateCalendar() {
     });
 }
 
-// استدعاء تحديث الرزنامة عند تحميل الصفحة
+// Call updateCalendar when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     updateCalendar();
-
-    
 });
 
-// إرسال طلب حجز الموعد
+// Call updateCalendar when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    updateCalendar();
+});
+
+// Send appointment booking request
 async function bookAppointment(formData) {
     try {
         const response = await fetch(`${API_BASE_URL}/bookAppointment`, {
@@ -101,7 +191,7 @@ async function bookAppointment(formData) {
     }
 }
 
-// التعامل مع إرسال الفورم
+// Handle form submission
 document.querySelector('#appointmentForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -127,10 +217,10 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
 });
 
 
-// التعامل مع إرسال طلب الاستشارة
+// Handle consultation request submission
 async function submitConsultationForm(formData) {
     try {
-      // إرسال الطلب إلى API إضافة المستخدم
+      // Send the request to the add user API
       const response = await fetch(`${API_BASE_URL}/addUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -151,7 +241,7 @@ async function submitConsultationForm(formData) {
     }
   }
   
-  // التعامل مع فورم طلب الاستشارة
+  // Handle consultation form submission
   document.querySelector('#consultationForm').addEventListener('submit', function (event) {
     event.preventDefault();
   

@@ -1,9 +1,8 @@
 // URL الأساسي للسيرفر
-// const API_BASE_URL = "http://localhost:3000";
-const API_BASE_URL = 'https://user-api-server.onrender.com';
+const API_BASE_URL = "http://localhost:3000";
+// const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 $(document).ready(function () {
-    // const clinicDomain = "user-api-server.onrender.com";
 
     $("#sectionAbout").hide();
     $("#sectionAppointment").hide();
@@ -15,6 +14,8 @@ $(document).ready(function () {
     $(".btn-book-appointment").hide();
 
     const clinicDomain = "AaronClinic";
+    // const clinicDomain = "user-api-server.onrender.com";
+
     fetchClinicConfig(clinicDomain);
     initializeI18n();
     setupEventListeners();
