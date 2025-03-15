@@ -160,9 +160,9 @@ $(document).ready(function () {
         $('#sectionsSection').empty(); // Clear the current content
 
         // استخدام اللغة المحددة في العنوان والوصف والمحتوى
-        const title = subcategory.title[lang] || subcategory.title['en'];
-        const description = subcategory.description[lang] || subcategory.description['en'];
-        const content = subcategory.content[lang] || subcategory.content['en'];
+        const title = subcategory.title[lang] || subcategory.title['es'];
+        const description = subcategory.description[lang] || subcategory.description['es'];
+        const content = subcategory.content[lang] || subcategory.content['es'];
 
         // إضافة البيانات إلى الـ HTML
         $('#sectionsSection').append(`
@@ -200,10 +200,10 @@ function fetchSections() {
 
 function renderSections(sections) {
     if (sections.length === 0) return;
-    const lang = localStorage.getItem("selectedLang") || "en";
+    const lang = localStorage.getItem("selectedLang") || "es";
     sections.forEach(section => {
-        const title = section.title[lang] || section.title['en'];
-        const description = section.description[lang] || section.description['en'];
+        const title = section.title[lang] || section.title['es'];
+        const description = section.description[lang] || section.description['es'];
         const imageUrl = section.imageUrl;
         $("#sectionsSection").append(`
             <div class="col">
