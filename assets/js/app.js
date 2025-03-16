@@ -51,8 +51,8 @@ $(document).ready(function () {
         $('#categoriesSection').empty();
 
         categories.forEach(category => {
-          const title = category.title[lang] || category.title['en'];
-          const description = category.description[lang] || category.description['en'];
+          const title = category.title[lang] || category.title['es'];
+          // const description = category.description[lang] || category.description['en'];
           const categoryId = category.categoryId;
 
           $('#categoriesSection').append(`
@@ -61,7 +61,6 @@ $(document).ready(function () {
                           <img src="${category.imageUrl}" class="card-img-top" alt="${title}">
                           <div class="card-body">
                               <h5 class="card-title">${title}</h5>
-                              <p class="card-text">${description}</p>
                               <a href="javascript:void(0);" class="btn btn-primary">Read More</a>
                           </div>
                       </div>
@@ -117,10 +116,9 @@ $(document).ready(function () {
           subcategoriesContainer.append(`
           <div class="col-md-4 mb-4 mt-5">
             <div class="card subcategory-card" data-section-id="${sectionId}" data-category-id="${categoryId}" data-subcategory-id="${subcategory.subcategoryId}">
-              <img src="${subcategory.imageUrl}" class="card-img-top" alt="${subcategory.title.en}" style="height: 36px; width: 40%; object-fit: cover;">
+              <img src="${subcategory.imageUrl}" class="card-img-top" alt="${subcategory.title.es}" style="height: 36px; width: 40%; object-fit: cover;">
               <div class="card-body">
-                <h6 class="card-title" style="font-size: 14px; font-weight: bold;">${subcategory.title.en}</h6>
-                <p class="card-text" style="font-size: 12px; color: #555;">${subcategory.description.en}</p>
+                <h6 class="card-title" style="font-size: 14px; font-weight: bold;">${subcategory.title.es}</h6>
                 <a href="subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}&subcategoryId=${subcategory.subcategoryId}" class="btn btn-sm btn-primary">Read More</a>
               </div>
             </div>
@@ -161,7 +159,7 @@ $(document).ready(function () {
 
         // استخدام اللغة المحددة في العنوان والوصف والمحتوى
         const title = subcategory.title[lang] || subcategory.title['es'];
-        const description = subcategory.description[lang] || subcategory.description['es'];
+        // const description = subcategory.description[lang] || subcategory.description['es'];
         const content = subcategory.content[lang] || subcategory.content['es'];
 
         // إضافة البيانات إلى الـ HTML
@@ -169,7 +167,6 @@ $(document).ready(function () {
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">${title}</h5>
-                    <p class="card-text">${description}</p>
                     <hr>
                     <p class="card-text">${content}</p>
                 </div>
@@ -203,7 +200,7 @@ function renderSections(sections) {
     const lang = localStorage.getItem("selectedLang") || "es";
     sections.forEach(section => {
         const title = section.title[lang] || section.title['es'];
-        const description = section.description[lang] || section.description['es'];
+        // const description = section.description[lang] || section.description['es'];
         const imageUrl = section.imageUrl;
         $("#sectionsSection").append(`
             <div class="col">

@@ -295,7 +295,7 @@
                     // $('#subcategoryTitle').text(data.title[lang] || data.title['en']);
                     // $('#subcategoryDescription').text(data.description[lang] || data.description['en']);
                     // $('#subcategoryContent').text(data.content[lang] || data.content['en']);
-                    let htmlContent = data.content[lang];
+                    let htmlContent = data.content[lang] || data.content['es'];
                     document.getElementById("contentContainer").innerHTML = htmlContent;
 
 
