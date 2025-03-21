@@ -1,7 +1,7 @@
 
 
 $(document).ready(function () {
-    fetchSections();
+  fetchSections();
 
 
   // $('#google-login').click(function () {
@@ -45,14 +45,13 @@ $(document).ready(function () {
     const lang = 'en';
 
     $.ajax({
-      url: `${API_BASE_URL}/section/${sectionId}/categories`,
+      url: `${API_BASE_URL}/newsection/section/${sectionId}/categories`,
       method: 'GET',
       success: function (categories) {
         $('#categoriesSection').empty();
 
         categories.forEach(category => {
           const title = category.title[lang] || category.title['es'];
-          // const description = category.description[lang] || category.description['en'];
           const categoryId = category.categoryId;
 
           $('#categoriesSection').append(`
@@ -69,19 +68,10 @@ $(document).ready(function () {
               `);
         });
 
-        // عند الضغط على كارد الفئة
-        $('.category-card').click(function (event) {
-          event.preventDefault();  // لمنع التغيير في الرابط
-          const categoryId = $(this).data('category-id');
-
-          // إزالة الحدود الزرقاء من جميع الكروت وإخفاء الفئات الفرعية
-          $('.category-card').removeClass('border-primary');
-          $('.subcategories-container').slideUp();
-
-          // إضافة الحدود الزرقاء للفئة المختارة وإظهار الفئات الفرعية
-          $(this).addClass('border-primary');
-
-          loadSubcategories(sectionId, categoryId);
+        $(".category-card").click(function () {
+          const categoryId = $(this).data("category-id");
+          console.log("categoryId", categoryId);
+          window.location.href = `subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}`;
         });
       },
       error: function (err) {
@@ -183,26 +173,26 @@ $(document).ready(function () {
 
 
 function fetchSections() {
-    $.ajax({
-        url: `${API_BASE_URL}/sections`,
-        method: "GET",
-        success: function (data) {
-            renderSections(data);
-        },
-        error: function (err) {
-            console.error("Error fetching sections:", err);
-        }
-    });
+  $.ajax({
+    url: `${API_BASE_URL}/newsection/sections`,
+    method: "GET",
+    success: function (data) {
+      renderSections(data);
+    },
+    error: function (err) {
+      console.error("Error fetching sections:", err);
+    }
+  });
 }
 
 function renderSections(sections) {
-    if (sections.length === 0) return;
-    const lang = localStorage.getItem("selectedLang") || "es";
-    sections.forEach(section => {
-        const title = section.title[lang] || section.title['es'];
-        // const description = section.description[lang] || section.description['es'];
-        const imageUrl = section.imageUrl;
-        $("#sectionsSection").append(`
+  if (sections.length === 0) return;
+  const lang = localStorage.getItem("selectedLang") || "es";
+  sections.forEach(section => {
+    const title = section.title[lang] || section.title['es'];
+    // const description = section.description[lang] || section.description['es'];
+    const imageUrl = section.imageUrl;
+    $("#sectionsSection").append(`
             <div class="col">
                 <div class="card" data-section-id="${section.sectionId}">
                     <img src="${imageUrl}" class="card-img-top" alt="${title}">
@@ -212,15 +202,15 @@ function renderSections(sections) {
                 </div>
             </div>
         `);
-    });
-    $(".card").click(function () {
-        const sectionId = $(this).data("section-id");
-        window.location.href = `categories.html?sectionId=${sectionId}`;
-    });
+  });
+  $(".card").click(function () {
+    const sectionId = $(this).data("section-id");
+    window.location.href = `categories.html?sectionId=${sectionId}`;
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
- 
+
   // Check if user data exists in localStorage
   const userName = localStorage.getItem('userName');
 
@@ -228,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Display user name and dashboard link
 
     let welcomeText = i18next.t('user_welcome');
-    console.log("test",welcomeText);
+    console.log("test", welcomeText);
     if (welcomeText === 'user_welcome') {
       document.getElementById('userName').textContent = `${welcomeText}, ${userName}`;
 
