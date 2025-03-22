@@ -1,5 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  font-family: var(--primary-font-family) !important;
   background-color: #f8f9fa;
   color: #212529;
 }
@@ -35,13 +36,18 @@ button {
 button.btn.btn-primary {
   background: #f77200;
   border-color: #a34b00;
+  font-weight: 700;
 }
 
-a.btn.btn-primary {
+/* a.btn.btn-primary {
   background: #00a791;
   border-color: #039b87;
-}
+} */
 
+a.btn.btn-primary {
+  background: var(--primary-color);
+  border-color:var(--primary-color);
+}
 
 .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
   color: var(--bs-btn-active-color);
@@ -203,7 +209,9 @@ a.btn.btn-primary {
 }
 
 .clinic-info .carousel {
-  height: 100%;
+  /* height: 100%; */
+  height: 94%;
+
 }
 
 .clinic-info .carousel-inner {
@@ -299,7 +307,8 @@ footer ul.list-inline li {
 }
 
 footer.bg-dark.text-white.pt-5.pb-3 {
-  background-color: rgb(4 104 121) !important
+  /* background-color: rgb(4 104 121) !important */
+  background-color:var(--primary-color) !important;
 }
 
 /* .subcategory-row {
@@ -320,3 +329,56 @@ footer.bg-dark.text-white.pt-5.pb-3 {
 .ms-auto {
   margin-left: unset !important;
 }
+
+ /* جعل لون الخلفية الأبيض عند hover يغطي كامل ارتفاع الـ nav */
+ .menu-bar .nav-link {
+  transition: background 0.3s, color 0.3s;
+  padding: 15px 20px; /* تكبير المساحة */
+}
+
+.menu-bar .nav-item:hover .nav-link {
+  background: white !important;
+  color: #43a047 !important;
+  height: 100%; /* تأكد من تعبئة الـ nav */
+  display: block;
+  /* font-weight: bold; */
+}
+
+/* تنسيق القائمة الفرعية */
+.submenu {
+  display: none;
+  position: absolute;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  min-width: 150px;
+  z-index: 1050;
+}
+
+.submenu li {
+  padding: 8px 12px;
+}
+
+.submenu li a {
+  text-decoration: none;
+  color: black;
+background: #f1f1f100;
+  display: block;
+}
+
+.submenu li:hover {
+  background: #f1f1f100;
+}
+
+/* إظهار القائمة الفرعية عند تمرير الماوس */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item.dropdown:hover .submenu {
+  display: block;
+}
+

@@ -1,6 +1,6 @@
 // URL الأساسي للسيرفر
-// const API_BASE_URL = "http://localhost:3000";
-const API_BASE_URL = 'https://user-api-server.onrender.com';
+const API_BASE_URL = "http://localhost:3000";
+// const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 $(document).ready(function () {
 
@@ -42,6 +42,8 @@ function updateClinicUI(data) {
     console.log(data.theme.primaryColor);
 
     //CSS VARIABLES
+    document.documentElement.style.setProperty("--primary-font-family", data.theme.font ? data.theme.font : "Arial, sans-serif");
+    document.documentElement.style.setProperty("--secondary-font-family", data.theme.secondaryFontFamily ? data.theme.secondaryFontFamily : "Arial, sans-serif");
     document.documentElement.style.setProperty("--primary-color", data.theme.primaryColor);
     document.documentElement.style.setProperty("--primary-font-color", data.theme.primaryFontColor);
     document.documentElement.style.setProperty("--secondary-color", data.theme.secondaryColor);
@@ -62,8 +64,8 @@ function updateClinicUI(data) {
     $(".job-title").text(data.clinicInfo.jobTitle);
     $(".additional-degree").text(data.clinicInfo.additionalDegree);
     $(".academic-position").text(data.clinicInfo.academicPosition);
-    $(".cinic-about").text(data.clinicInfo.about);
-    $(".contact-telephone").text(data.clinicInfo.contact);
+    // $(".cinic-about").text(data.clinicInfo.about);
+    $(".contact-telephone").text(data.clinicInfo.mobile);
     $(".clinic-email").text(data.clinicInfo.email);
     $(".clinic-copyright").text(data.clinicInfo.copyright);
 
@@ -122,7 +124,7 @@ function updateLanguageDropdown(languages) {
 function initializeI18n() {
     i18next.use(i18nextHttpBackend).use(i18nextBrowserLanguageDetector).init({
         lng: localStorage.getItem("selectedLang") || "es",
-        fallbackLng: "en",
+        fallbackLng: "es",
         debug: true,
         backend: { loadPath: `${API_BASE_URL}/locales/{{lng}}.json` }
     }, function (err, t) {

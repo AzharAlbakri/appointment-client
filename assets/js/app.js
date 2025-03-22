@@ -40,6 +40,101 @@ $(document).ready(function () {
   });
 
 
+
+
+ // دالة للبحث عن الأقسام وعرضها في الـ Navbar
+//  function loadSections() {
+//   $.get(`${API_BASE_URL}/newsection/nav/section`, function (sections) {
+//       // تحديث navbar بالبيانات المأخوذة من الـ backend
+//       if (sections && Array.isArray(sections)) {
+//           const navList = $('#sectionsList');
+          
+//           sections.forEach(section => {
+//               const sectionTitle = section.title.es; // العنوان بالـ إسباني
+//               const categories = section.categories;
+
+//               // إضافة قسم جديد
+//               const sectionItem = `
+//                   <li class="nav-item dropdown">
+//                       <a class="nav-link text-white dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+//                           ${sectionTitle}
+//                       </a>
+//                       <ul class="dropdown-menu submenu" aria-labelledby="navbarDropdown">
+//                           ${categories.map(cat => `
+//                               <li><a class="dropdown-item category-link" href="#" data-section-id="${section.sectionId}" data-category-id="${cat.categoryId}">${cat.title.es}</a></li>
+//                           `).join('')}
+//                       </ul>
+//                   </li>
+//               `;
+//               navList.append(sectionItem);
+//           });
+
+//           // عندما ينقر المستخدم على فئة، انتقل إلى صفحة الفئة
+//           $('.category-link').click(function (e) {
+//               e.preventDefault();
+//               const sectionId = $(this).data('section-id');
+//               const categoryId = $(this).data('category-id');
+
+//               window.location.href = `subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}`;
+//           });
+//       }
+//   }).fail(function () {
+//       console.error("Error loading sections.");
+//   });
+// }
+
+// loadSections(); 
+
+
+
+function loadSectionsStatic() {
+  $.get(`${API_BASE_URL}/newsection/navstatic/section`, function (sections) {
+      // تحديث navbar بالبيانات المأخوذة من الـ backend
+      if (sections && Array.isArray(sections)) {
+          const navList = $('#sectionsList');
+          
+          sections.forEach(section => {
+            console.log("^^^^^section", section);
+              const sectionTitle = section.title;  // العنوان بالـ إسباني أو بالعربي
+              const categories = section.categories;
+              //const i18nData = section.i18next;
+              // إضافة قسم جديد
+              const sectionItem = `
+                  <li class="nav-item dropdown">
+                      <a class="nav-link text-white menu-link" href="#" role="button" id="navbarDropdown" aria-expanded="false" data-i18n="${section.i18next}">
+                          ${sectionTitle}
+                      </a>
+                      ${categories.length > 0 ? `
+                          <ul class="submenu">
+                              ${categories.map(cat => `
+                                  <li><a href="#" class="category-link" data-page-name="${section.page}" data-section-id="${section.sectionId}" data-category-id="${cat.categoryId}">${cat.title.es}</a></li>
+                              `).join('')}
+                          </ul>
+                      ` : ''}
+                  </li>
+              `;
+              navList.append(sectionItem);
+          });
+
+          $('.category-link').click(function (e) {
+            e.preventDefault();
+            const sectionId = $(this).data('section-id');
+            const categoryId = $(this).data('category-id');
+            const pageName = $(this).data('page-name');
+            //window.location.href = `subcategory.html?sectionId=${sectionId}&categoryId=${categoryId}`;
+
+            window.location.href = `${pageName}.html?sectionId=${sectionId}&categoryId=${categoryId}`;
+        });
+      }
+  }).fail(function () {
+      console.error("Error loading sections.");
+  });
+}
+
+
+loadSectionsStatic();
+
+
   // جعل الدالة متاحة عالميًا
   window.loadCategories = function (sectionId) {
     const lang = 'en';
