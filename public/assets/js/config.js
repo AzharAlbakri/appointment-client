@@ -4,6 +4,23 @@ const API_BASE_URL = 'https://user-api-server.onrender.com';
 
 $(document).ready(function () {
 
+
+    $(".headerShared").load("/header.html", function () {
+        console.log("✅ الهيدر تم تحميله.");
+
+        $(".headerShared").css({
+            // "position": "sticky",
+            // "top": "0",
+            "z-index": "200",
+            "min-height": "60px"
+        });
+        runApp(); // تشغيل `app.js` بعد تحميل الهيدر
+    });
+
+    $(".consultationFormShared").load("/consultation-form.html");
+    $(".consultationForm").load("/consultation-form.html");
+    $(".footerShared").load("/footer.html");
+
     $("#sectionAbout").hide();
     $("#sectionAppointment").hide();
     $(".consultation-form").hide();
@@ -19,6 +36,8 @@ $(document).ready(function () {
     fetchClinicConfig(clinicDomain);
     initializeI18n();
     setupEventListeners();
+
+   
 });
 
 
@@ -87,7 +106,7 @@ function updateClinicUI(data) {
     data.sections.servicesSection ? $("#sectionSections").show() : $("#sectionSections").hide();
     data.features.enableOnlineBooking ? $(".btn-book-appointment").show() : $(".btn-book-appointment").hide();
 
-    
+
 
 
     updateLanguageDropdown(data.languageList);

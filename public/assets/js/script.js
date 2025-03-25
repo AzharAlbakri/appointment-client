@@ -76,7 +76,7 @@
 // document.addEventListener('DOMContentLoaded', () => {
 //     updateCalendar();
 
-    
+
 // });
 
 async function fetchAppointments() {
@@ -85,7 +85,7 @@ async function fetchAppointments() {
         if (!response.ok) throw new Error("Failed to fetch appointments.");
 
         const appointments = await response.json();
-        
+
         // طباعة البيانات المسترجعة للتحقق من تنسيقها
         console.log("Appointments:", appointments);
 
@@ -123,7 +123,7 @@ async function updateCalendar() {
             }
         });
 
-       // Update time options
+        // Update time options
         appointmentTimeInput.innerHTML = '';// Clear previous options
         if (availableTimes.length > 0) {
             availableTimes.forEach(time => {
@@ -199,17 +199,17 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
         patient_name: document.querySelector('#patientName').value,
         phone_number: document.querySelector('#phoneNumber').value,
         email: document.querySelector('#email').value,
-        identity_number: document.querySelector('#identityNumber').value,
+        // identity_number: document.querySelector('#identityNumber').value,
         appointment_date: document.querySelector('#appointmentDate').value,
         appointment_time: document.querySelector('#appointmentTime').value,
         appointment_reason: document.querySelector('#appointmentReason').value,
-        preferred_doctor: document.querySelector('#preferredDoctor').value,
-        additional_notes: document.querySelector('#additionalNotes').value,
-        has_insurance: document.querySelector('#hasInsurance').checked,
-        insurance_company: document.querySelector('#insuranceCompany').value,
-        insurance_policy_number: document.querySelector('#insurancePolicyNumber').value,
+        // preferred_doctor: document.querySelector('#preferredDoctor').value,
+        // additional_notes: document.querySelector('#additionalNotes').value,
+        // has_insurance: document.querySelector('#hasInsurance').checked,
+        // insurance_company: document.querySelector('#insuranceCompany').value,
+        // insurance_policy_number: document.querySelector('#insurancePolicyNumber').value,
         agree_to_terms: document.querySelector('#agreeToTerms').checked,
-        reminder_method: document.querySelector('#reminderMethod').value,
+        // reminder_method: document.querySelector('#reminderMethod').value,
         // appointment_id: 'ioqd638bJmJv0UGXcGY0'
     };
 
@@ -220,42 +220,42 @@ document.querySelector('#appointmentForm').addEventListener('submit', function (
 // Handle consultation request submission
 async function submitConsultationForm(formData) {
     try {
-      // Send the request to the add user API
-      const response = await fetch(`${API_BASE_URL}/addUser`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-  
-      const result = await response.json();
-      if (response.ok) {
-        alert(`The consultation request has been successfully submitted! User ID: ${result.userId}`);
+        // Send the request to the add user API
+        const response = await fetch(`${API_BASE_URL}/addUser`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
 
-      } else {
-        alert(`Error: ${result.error}`);
-      }
+        const result = await response.json();
+        if (response.ok) {
+            alert(`The consultation request has been successfully submitted! User ID: ${result.userId}`);
+
+        } else {
+            alert(`Error: ${result.error}`);
+        }
     } catch (error) {
         console.error('Error while sending the consultation request:', error);
         alert('An error occurred while connecting to the server.');
-        
+
     }
-  }
-  
-  // Handle consultation form submission
-  document.querySelector('#consultationForm').addEventListener('submit', function (event) {
+}
+
+// Handle consultation form submission
+document.querySelector('#consultationForm').addEventListener('submit', function (event) {
     event.preventDefault();
-  
+
     // جمع بيانات الفورم
     const formData = {
-      fullName: document.querySelector('#consultationfullName').value,
-      email: document.querySelector('#consultationemail').value,
-      phone: document.querySelector('#consultationphone').value,
-      contactMethod: document.querySelector('#consultationcontactMethod').value,
-      consultationType: document.querySelector('#consultationconsultationType').value,
-      additionalInfo: document.querySelector('#consultationadditionalInfo').value,
+        fullName: document.querySelector('#consultationfullName').value,
+        email: document.querySelector('#consultationemail').value,
+        phone: document.querySelector('#consultationphone').value,
+        contactMethod: document.querySelector('#consultationcontactMethod').value,
+        consultationType: document.querySelector('#consultationconsultationType').value,
+        additionalInfo: document.querySelector('#consultationadditionalInfo').value,
     };
-  
+
     // إرسال البيانات إلى السيرفر
     submitConsultationForm(formData);
-  });
+});
 
