@@ -7,6 +7,18 @@
       {
         "source": "/index",
         "destination": "/index.html"
+      },
+      {
+        "source": "/patologías",
+        "destination": "patologías.html"
+      },
+      {
+        "source": "/Patologías/estensis",
+        "destination": "estensis.html"
+      },
+      {
+        "source": "/Patologías/fracturas",
+        "destination": "fracturas.html"
       }
     ]
   }
