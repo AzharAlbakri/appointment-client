@@ -13,12 +13,12 @@
         "destination": "patologías.html"
       },
       {
-        "source": "/Patologías/estensis",
-        "destination": "estensis.html"
+        "source": "/estensis",
+        "destination": "/estensis.html"
       },
       {
-        "source": "/Patologías/fracturas",
-        "destination": "fracturas.html"
+        "source": "/fracturas",
+        "destination": "/fracturas.html"
       }
     ]
   }
