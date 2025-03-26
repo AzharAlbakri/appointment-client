@@ -9,16 +9,16 @@
         "destination": "/index.html"
       },
       {
-        "source": "/patologías",
-        "destination": "patologías.html"
+        "source": "/patologias",
+        "destination": "patologias.html"
       },
       {
-        "source": "/Patologías/fracturas",
-        "destination": "/Patologías/estenosis.html"
+        "source": "/patologias/fracturas",
+        "destination": "/patologias/estenosis.html"
       },
       {
-        "source": "/Patologías/fracturas",
-        "destination": "/Patologías/fracturas.html"
+        "source": "/patologias/fracturas",
+        "destination": "/patologias/fracturas.html"
       }
     ]
   }
