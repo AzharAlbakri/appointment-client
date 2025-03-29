@@ -21,14 +21,14 @@ $(document).ready(function () {
     $(".consultationForm").load("/consultation-form.html");
     $(".footerShared").load("/footer.html");
 
-    $("#sectionAbout").hide();
-    $("#sectionAppointment").hide();
-    $(".consultation-form").hide();
-    $("#Footer").hide();
-    $("#userNav").hide();
-    $("#sectionHero").hide();
-    $("#servicesSection").hide();
-    $(".btn-book-appointment").hide();
+    // $("#sectionAbout").hide();
+    // $("#sectionAppointment").hide();
+    // $(".consultation-form").hide();
+    // $("#Footer").hide();
+    // $("#userNav").hide();
+    // $("#sectionHero").hide();
+    // $("#servicesSection").hide();
+    // $(".btn-book-appointment").hide();
 
     const clinicDomain = "AaronClinic";
     // const clinicDomain = "user-api-server.onrender.com";
@@ -97,14 +97,14 @@ function updateClinicUI(data) {
     $(".clinic-logo").attr("src", data.logo || "assets/images/defaultLogo.png");
 
     //HIDE AND SHOW
-    data.sections.aboutSection ? $("#sectionAbout").show() : $("#sectionAbout").hide();
-    data.sections.appointmentSection ? $("#sectionAppointement").show() : $("#sectionAppointement").hide();
-    data.sections.consultationForm ? $(".consultation-form").show() : $(".consultation-form").hide();
-    data.sections.footerSection ? $("#Footer").show() : $("#Footer").hide();
-    data.sections.login ? $("#userNav").show() : $("#userNav").hide();
-    data.sections.heroSection ? $("#sectionHero").show() : $("#sectionHero").hide();
-    data.sections.servicesSection ? $("#sectionSections").show() : $("#sectionSections").hide();
-    data.features.enableOnlineBooking ? $(".btn-book-appointment").show() : $(".btn-book-appointment").hide();
+    // data.sections.aboutSection ? $("#sectionAbout").show() : $("#sectionAbout").hide();
+    // data.sections.appointmentSection ? $("#sectionAppointement").show() : $("#sectionAppointement").hide();
+    // data.sections.consultationForm ? $(".consultation-form").show() : $(".consultation-form").hide();
+    // data.sections.footerSection ? $("#Footer").show() : $("#Footer").hide();
+    // data.sections.login ? $("#userNav").show() : $("#userNav").hide();
+    // data.sections.heroSection ? $("#sectionHero").show() : $("#sectionHero").hide();
+    // data.sections.servicesSection ? $("#sectionSections").show() : $("#sectionSections").hide();
+    // data.features.enableOnlineBooking ? $(".btn-book-appointment").show() : $(".btn-book-appointment").hide();
 
 
 
